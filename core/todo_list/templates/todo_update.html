@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="center-column" style="
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-left: 15px;">
+    <div>
+        <h1>
+            Update task
+        </h1>
+    </div>
+    <div>
+        <form id="update_form" method="POST">
+            {% csrf_token %}
+            <div class="grid-container-todoupdateform">
+                <p>Content:</p>
+                <span>{{form.title}}</span>
+            </div>
+            <div class="grid-container-todoupdateform-justify">
+                <p>Complete:</p>
+                <span style="">{{form.complete}}</span>
+            </div>
+        </form>
+        <div class="grid-container-twobuttons">
+            <form action="{% url 'todo_main' %}">
+                <span>
+                <input class="btn-sm btn-info" style="float: left" type="submit" value="cancel">
+                </span>
+            </form>
+            <span>
+                <!-- intentionally empty span -->
+            </span>
+            <span>
+                <input form="update_form" class="btn-sm btn-info" type="submit" value="update" name="Update Item">
+            </span>
+        </div>
+    </div>
+</div>
+{% endblock content %}

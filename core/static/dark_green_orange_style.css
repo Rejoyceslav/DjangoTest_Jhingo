@@ -1,0 +1,276 @@
+/* NAVBAR */
+.bg-dark {
+    background-color: #453163 !important;
+}
+
+.navbar-brand {
+    color: #00bfbf !important;
+}
+/*
+.navbar-brand:focus, .navbar-brand:hover {
+    text-decoration: none;
+    color: MediumPurple !important;
+}*/
+
+.nav-link {
+    color: GoldenRod !important;
+}
+
+.nav-link:focus, .nav-link:hover {
+    color: #00bfbf !important;
+}
+
+.dropdown-menu {
+    background-color: #453163 !important;
+    border: 0px solid rgba(0, 190, 190, 0.55) !important;
+    min-width: 8rem !important;
+    border-radius: 0.25rem !important;
+    box-shadow: 2px 2px 5px 3px rgba(30,30,50,0.75);
+}
+
+.dropdown-item {
+    background-color: #453163 !important;
+    padding: 0.15rem 1.0rem;
+}
+
+.dropdown-item:focus, .dropdown-item:hover { /* dropdown links */
+    color: #00bfbf !important;
+}
+
+@media all and (min-width: 1024px) { /* hover to dropdown */
+	.navbar .nav-item:hover .dropdown-menu {display: block}
+	/* ^mechanism: when you hover over nav-item that inherits from .navbar, apply {display: block} to .dropdown-menu */
+	.navbar .nav-item .dropdown-menu{margin-top:0}
+	/* ^removes margin from top so dropdown doesn't expire before you hover over */
+}
+
+@media (max-width: 1024px) { /* dropdown for mobile customization */
+    .dropdown-menu {
+        border: 0px solid rgba(0, 190, 190, 0.55) !important;
+        box-shadow: none;
+        /* offset-x | offset-y | blur-radius | spread-radius | color */
+    }
+}
+/* end NAVBAR */
+
+ /* DIVS */
+.center-this {
+    color: #b27f4b;
+    text-align: center;
+}
+/* end DIVS */
+
+/* BUTTONS */
+.btn-danger{
+    background-color: #725230;
+    border-radius: 4px;
+    border-color: #318686;
+    border-width: 2px;
+    font-weight: bold;
+    color: Orange;
+}
+
+.btn-danger:hover{
+    background-color: #8e663c;
+    color: fff;
+    border-color: #00bfbf;
+}
+
+.btn-info{
+    background-color: #004747;
+    border-radius: 4px;
+    border-color: #318686;
+    border-width: 2px;
+    font-weight: bold;
+    color: Orange;
+}
+
+.btn-info:hover {
+    background-color: #005959 !important;
+    color: fff;
+    border-color: #00bfbf;
+}
+
+.btn-info:focus, .btn-danger:focus { box-shadow: none!important } /* removes ugly shadows on focus */
+
+.custom-button {
+    background-color: #296363;
+    padding: .5em;
+    border-radius: 6px;
+    /*color: GoldenRod;*/
+    color: Black;
+    font-family: 'Garamond';
+    font-size: 20px;
+    border: none;
+}
+
+.custom-button:hover {
+    border: none;
+    background: orange;
+    color: black;
+    box-shadow: 0px 0px 1px #777;
+}
+/* end BUTTONS */
+
+ /* BODY */
+body{
+background-color: #131516;
+color: LightGrey;
+}
+
+.background-div{
+background-color: #131516;
+}
+ /* end BODY */
+
+ /* TEXT */
+p {
+    color: #Orange;
+}
+
+h1, h2, h3, h4, h5 {
+    color: #bb8d5f;
+    text-align: center;
+}
+
+/* end TEXT */
+
+/* LINK */
+a:link {
+    text-decoration: none;
+    color: GoldenRod;
+}
+
+a:visited {
+    text-decoration: none;
+    color: GoldenRod;
+}
+
+a:hover {
+  color: #296363;
+}
+
+a:active {
+    text-decoration: none;
+    color: #296363;
+}
+/* end LINK */
+
+/* TO-DO LIST */
+.center-column{
+    width: 600px;
+    margin: 20px auto;
+    padding-top: 10px;
+    padding-right: 5px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    background-color: #1d1f21;
+    border-radius: 3px;
+    box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
+}
+
+.item-row{
+    background-color: #153232;
+    margin: 10px;
+    padding: 10px;
+    color: Orange;
+    border-radius: 3px;
+    font-size: 16px;
+    box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.75);
+}
+
+/*
+column-for-input {
+    padding-right: -20px;
+    padding-left: -20px;
+}
+*/
+
+.column-for-item-row {
+    padding-right: 35px;
+    padding-left: 15px;
+}
+
+.grid-container-todomain {
+  display: grid;
+  grid-template-columns: 72% 2% 13% 1% 12%;
+}
+
+.grid-container-todoupdate {
+  display: grid;
+}
+
+.grid-container-twobuttons {
+  display: grid;
+  grid-template-columns: 49% 2% 49%;
+}
+
+.grid-container-todoupdateform {
+  display: grid;
+  grid-template-columns: 15% 85%;
+  color: orange;
+}
+
+.grid-container-todoupdateform-justify {
+  display: grid;
+  grid-template-columns: 15% auto;
+  color: orange;
+  justify-content: left;
+}
+/* end TO-DO LIST */
+
+
+/* WORD COUNTER */
+.column-for-textarea{
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+/* end WORD COUNTER */
+
+/* INPUT */
+input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+}
+
+input::placeholder {
+    color: #d3d3d3;
+}
+
+.input-dark{
+    background-color: #1d1f21;
+    color: orange;
+    box-sizing: border-box;
+    border: 2px solid #3e9797;
+    border-radius: 5px;
+    border-width: 2px;
+}
+
+.input-dark:hover, .input-dark:focus {
+    border: 2px solid #00bfbf;
+    outline: none;
+}
+/* end INPUT */
+
+ /* TEXTAREA */
+.textarea {
+    background-color: #242729;
+    color: orange;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #3e9797;
+    border-radius: 4px;
+    resize: none;
+    font-family: 'Times New Roman';
+}
+
+.textarea:focus {
+    outline: none;
+}
+ /* end TEXTAREA */
+
+
+

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container center-column" style="width: 900px">
+    <h2>
+        Paste text into the form to count them words!
+    </h2>
+    <div class="column-for-textarea">
+        <div class="center-this">
+            <form method="POST" action="counter_result">
+                {% csrf_token %}
+                <textarea name="text" class="container textarea input-dark" rows="20" cols="115" spellcheck="false" autofocus></textarea><br>
+                <button type="submit" class="btn btn-sm btn-info" style = "position:relative; top:5px;">Count</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

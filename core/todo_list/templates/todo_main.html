@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container center-column">
+    <h2>
+        To-do List
+    </h2>
+    <div class="container">
+        <div class="column-for-input">
+        <form method="POST">
+            {% csrf_token %}
+            {{form.title}}
+            <input class="btn btn-info" type="submit" value="add item" name="Add Item">
+        </form>
+        </div>
+    </div>
+    {% for item in items_in_list %}
+    <div class="column-for-item-row">
+    <div class="container item-row grid-container-todomain">
+            {% if item.complete == True %}
+            <strike style="background-color: transparent">{{item}}</strike>
+            {% else %}
+            <span style="background-color: transparent">{{item}}</span>
+            {% endif %}
+            <span style="background-color: transparent">
+                <!-- intentionally empty span -->
+            </span>
+            <form action="{% url 'todo_update' item.id %}">
+                <span style="background-color: transparent">
+                    <input class="btn-sm btn-info" style="float: left" type="submit" value="update">
+                </span>
+            </form>
+<!--            <span style="background-color: transparent">-->
+<!--                <a class="btn btn-sm btn-info" style="float: left" href="{% url 'todo_update' item.id %}"> update</a>-->
+<!--            </span>-->
+            <span style="background-color: transparent">
+                <!-- intentionally empty span -->
+            </span>
+            <form action="{% url 'todo_delete' item.id %}">
+                <span style="background-color: transparent">
+                    <input class="btn-sm btn-danger" style="float: right" type="submit" value="delete">
+                </span>
+            </form>
+<!--            <span style="background-color: transparent">-->
+<!--                <a class="btn btn-sm btn-danger" style="float: right" href="{% url 'todo_delete' item.id %}"> delete</a>-->
+<!--            </span>-->
+    </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

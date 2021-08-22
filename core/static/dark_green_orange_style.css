@@ -68,6 +68,7 @@
     border-width: 2px;
     font-weight: bold;
     color: Orange;
+    font-size: 0.8vw;
 }
 
 .btn-danger:hover{
@@ -83,6 +84,7 @@
     border-width: 2px;
     font-weight: bold;
     color: Orange;
+    font-size: 0.8vw;
 }
 
 .btn-info:hover {
@@ -158,7 +160,7 @@ a:active {
 
 /* TO-DO LIST */
 .center-column{
-    width: 600px;
+    width: auto;
     margin: 20px auto;
     padding-top: 10px;
     padding-right: 5px;

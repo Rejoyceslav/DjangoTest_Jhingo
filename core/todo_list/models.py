@@ -8,3 +8,6 @@ class ToDoList(models.Model):
 
     def __str__(self):
         return self.title  # title is now the name of item in admin
+
+    # def get_absolute_url(self):
+    #     return

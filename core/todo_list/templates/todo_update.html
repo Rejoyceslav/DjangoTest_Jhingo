@@ -1,43 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'info_page.html' %}
 
-{% block content %}
+{% block info_content %}
 
-<div class="center-column" style="
-    max-width: 550px;
-    padding-top: 10px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-    padding-left: 15px;">
-    <div>
-        <h1>
-            Update task
-        </h1>
+<h2>
+    Update task
+</h2>
+
+<form id="update_form" method="POST">
+    {% csrf_token %}
+    <div class="container-fluid grid-container-todoupdateform">
+        <span>Content:</span>
+        <span>{{form.title}}</span>
     </div>
-    <div>
-        <form id="update_form" method="POST">
-            {% csrf_token %}
-            <div class="grid-container-todoupdateform">
-                <p>Content:</p>
-                <span>{{form.title}}</span>
-            </div>
-            <div class="grid-container-todoupdateform-justify">
-                <p>Complete:</p>
-                <span style="">{{form.complete}}</span>
-            </div>
-        </form>
-        <div class="grid-container-twobuttons">
-            <form action="{% url 'todo_main' %}">
-                <span>
-                <input class="btn-sm btn-info" style="float: left" type="submit" value="cancel">
-                </span>
-            </form>
-            <span>
-                <!-- intentionally empty span -->
-            </span>
-            <span>
-                <input form="update_form" class="btn-sm btn-info" type="submit" value="update" name="Update Item">
-            </span>
-        </div>
+    <div class="container-fluid grid-container-todoupdateform-justify">
+        <span>Complete:</span>
+        <span style="position:relative; left:5px;">{{form.complete}}</span>
     </div>
+</form>
+
+<div class="container-fluid grid-container-twobuttons">
+
+    <form action="{% url 'todo_main' %}">
+        <span>
+        <input class="btn-sm btn-info" style="float: left" type="submit" value="cancel">
+        </span>
+    </form>
+
+    <span>
+        <!-- intentionally empty span -->
+    </span>
+
+    <span>
+        <input form="update_form" class="btn-sm btn-info" type="submit" value="update" name="Update Item">
+    </span>
+
 </div>
-{% endblock content %}
+
+{% endblock info_content %}

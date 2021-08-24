@@ -1,13 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'info_page.html' %}
 
-{% block content %}
-<div class="container center-column" style="max-width: 400px">
-    <h2>
- Your text has {{amount_of_words}} words
-    </h2>
-    <div class="container center-this">
-        <p>go back to <a href = "{% url 'word_counter' %}">word counter</a></p>
-        <p>go one level deeper <a href = "{% url 'counter_result_deeper' %}">deeper level</a></p>
-    </div>
-</div>
-{% endblock content %}
+{% block info_content %}
+
+<h2>
+    Your text has {{amount_of_words}} words
+</h2>
+
+<span>go back to <a href = "{% url 'word_counter' %}">word counter</a></span>
+<br>
+<span>go one level deeper <a href = "{% url 'counter_result_deeper' %}">deeper level</a></span>
+
+{% endblock info_content %}

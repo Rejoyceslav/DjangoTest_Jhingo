@@ -1,35 +1,31 @@
-{% extends 'base.html' %}
+{% extends 'info_page.html' %}
 
-{% block content %}
+{% block info_content %}
 
-<div class="center-column" style="
-    max-width: 550px;
-    padding-top: 10px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-    padding-left: 15px;">
-    <div>
-        <h1>
-            Delete this task?
-        </h1>
-        <h2 style="color: #00bfbf">
-            "{{item}}"
-        </h2>
-    </div>
-    <div class="grid-container-twobuttons">
-            <form action="{% url 'todo_main' %}">
-        <span>
-            <input class="btn-sm btn-info" style="float: left" type="submit" value="cancel">
-        </span>
-            </form>
-        <span>
-        </span>
-            <form method="POST" action="">
-        <span class="center-this">
-        {% csrf_token %}
-            <input class="btn-sm btn-danger" style="float: right" type="submit" value="delete" name="Delete">
-        </span>
-            </form>
-    </div>
+<h2>
+    Delete this task?
+</h2>
+<h3 style="color: #00bfbf">
+    "{{item}}"
+</h3>
+
+<div class="grid-container-twobuttons">
+
+        <form action="{% url 'todo_main' %}">
+    <span>
+        <input class="btn-sm btn-info" style="float: left" type="submit" value="cancel">
+    </span>
+        </form>
+
+    <span>
+    </span>
+
+        <form method="POST" action="">
+    <span class="center-this">
+    {% csrf_token %}
+        <input class="btn-sm btn-danger" style="float: right" type="submit" value="delete" name="Delete">
+    </span>
+        </form>
 </div>
-{% endblock content %}
+
+{% endblock info_content %}

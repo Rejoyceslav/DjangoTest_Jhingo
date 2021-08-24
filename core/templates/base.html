@@ -23,7 +23,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'todo_main' %}">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
       </li>
 <!--      <li class="nav-item">-->
 <!--        <a class="nav-link" href="#">Link</a>-->
@@ -42,9 +42,28 @@
 <!--        <a class="nav-link disabled" href="#">Disabled</a>-->
       </li>
     </ul>
-      <div>
-        <img src="{% static 'img/zerg_logo.png' %}">
-      </div>
+<!--login/logout/display user's name-->
+    <ul class="navbar-nav">
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile_main' %}">{{ request.user }}</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'register_main' %}">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'login_main' %}">Login</a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+          <img src="{% static 'img/zerg_logo.png' %}">
+      </li>
+    </ul>
+<!--end of login/logout/display user's name-->
   </div>
 </nav>
 <div class="container-fluid">

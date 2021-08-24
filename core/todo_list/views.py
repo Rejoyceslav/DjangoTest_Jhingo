@@ -41,13 +41,13 @@ class ToDoUpdate(View):
         if form.is_valid():
             form.save()
 
-        return redirect('todo_main')  # 'to_do_main' is url name from urls
+        return redirect('todo_main')  # 'todo_main' is url name from urls
 
 
 class ToDoDelete(View):
     def get(self, request, pk):  # get request comes here, pk = primary key
         # item = ToDoList.objects.get(id=pk)
-        item = get_object_or_404(ToDoList, id=pk)
+        item = get_object_or_404(ToDoList, id=pk)  # if object is not found, show 404
         context = {'item': item}
         return render(request, 'todo_delete.html', context)
 

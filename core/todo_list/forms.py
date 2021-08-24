@@ -9,6 +9,7 @@ from .models import *
 # 2. by changing the widget in form class: field = forms.CharField(widget=forms.TextInput(attrs={}))
 # 3. by setting the widget in meta class: widgets = {'field': TextInput(attrs={})}
 class ToDoListForm(ModelForm):
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # 1.

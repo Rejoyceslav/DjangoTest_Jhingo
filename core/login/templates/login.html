@@ -1,0 +1,11 @@
+{% extends 'info_page.html' %}
+
+{% block info_content %}
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input class="btn btn-info" type="submit" value="Login">
+</form>
+
+{% endblock info_content %}

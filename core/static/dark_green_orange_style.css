@@ -158,6 +158,17 @@ a:active {
 }
 /* end LINK */
 
+/* end LINK */
+.info-box {
+    max-width: 550px;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    box-sizing: border-box;
+}
+/* end LINK */
+
 /* TO-DO LIST */
 .center-column{
     width: auto;

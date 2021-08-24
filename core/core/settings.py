@@ -13,10 +13,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 from os import path
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -27,8 +25,10 @@ SECRET_KEY = 'django-insecure-j!icd1&f+bt2tqf91*!27yrplv^2oqh%hc%e1c_u&b(cuwu@-f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    '2629881.pythonanywhere.com',
+]
 
 # Application definition
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'test',
     'word_counter',
     'todo_list',
+    'login',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +67,7 @@ TEMPLATES = [
             path.join(BASE_DIR, 'test/templates'),
             path.join(BASE_DIR, 'word_counter/templates'),
             path.join(BASE_DIR, 'todo_list/templates'),
+            path.join(BASE_DIR, 'login/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -81,7 +83,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -91,7 +92,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -111,7 +111,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -125,9 +124,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
+
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -141,3 +140,6 @@ MEDIA_ROOT = path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = 'login_main'

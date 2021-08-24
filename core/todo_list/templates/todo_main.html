@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container center-column" style="max-width: 650px">
-    <h2>
+<div class="container-fluid center-column" style="max-width: 650px">
+    <h1>
         To-do List
-    </h2>
-    <div class="container">
+    </h1>
+    <div class="container-fluid">
         <div class="column-for-input">
         <form method="POST">
             {% csrf_token %}
@@ -16,7 +16,7 @@
     </div>
     {% for item in items_in_list %}
     <div class="column-for-item-row">
-    <div class="container item-row grid-container-todomain">
+    <div class="container-fluid item-row grid-container-todomain">
             {% if item.complete == True %}
             <strike style="background-color: transparent">{{item}}</strike>
             {% else %}

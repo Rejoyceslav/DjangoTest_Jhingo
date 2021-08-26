@@ -16,35 +16,32 @@
     </div>
     {% for item in items_in_list %}
     <div class="column-for-item-row">
-    <div class="container-fluid item-row grid-container-todomain">
-            {% if item.complete == True %}
-            <strike style="background-color: transparent">{{item}}</strike>
-            {% else %}
-            <span style="background-color: transparent">{{item}}</span>
-            {% endif %}
-            <span style="background-color: transparent">
-                <!-- intentionally empty span -->
+        <div class="container-fluid item-row grid-container-todomain">
+            <span style="flex: 1 1 auto">
+                {% if item.complete == True %}
+                <strike style="word-break: break-word;">{{item}}</strike>
+                {% else %}
+                <span style="word-break: break-word;">{{item}}</span>
+                {% endif %}
             </span>
-            <form action="{% url 'todo_update' item.id %}">
-                <span style="background-color: transparent">
-                    <input class="btn-sm btn-info" style="float: left" type="submit" value="update">
-                </span>
-            </form>
-<!--            <span style="background-color: transparent">-->
-<!--                <a class="btn btn-sm btn-info" style="float: left" href="{% url 'todo_update' item.id %}"> update</a>-->
-<!--            </span>-->
-            <span style="background-color: transparent">
-                <!-- intentionally empty span -->
-            </span>
-            <form action="{% url 'todo_delete' item.id %}">
-                <span style="background-color: transparent">
-                    <input class="btn-sm btn-danger" style="float: right" type="submit" value="delete">
-                </span>
-            </form>
-<!--            <span style="background-color: transparent">-->
-<!--                <a class="btn btn-sm btn-danger" style="float: right" href="{% url 'todo_delete' item.id %}"> delete</a>-->
-<!--            </span>-->
-    </div>
+            <div class="grid-container-onecolumn">
+                <form action="{% url 'todo_update' item.id %}">
+                    <div class="tooltip-wrapper">
+                        <a class="btn btn-sm btn-info" style="" href="{% url 'todo_update' item.id %}"><i class="bi-pencil-square"></i></a>
+                        <div class="tooltip-box" style="">Edit</div>
+                    </div>
+                </form>
+                <div class="separator">
+                </div>
+                <form action="{% url 'todo_delete' item.id %}">
+                    <div class="tooltip-wrapper">
+                        <button class="btn-sm btn-danger" style="" id="inputDeleteButton"><i class="bi-trash"></i></button>
+                        <div class="tooltip-box" style="margin-left: -18px;">Delete</div>
+                        <input aria-labelledby="inputDeleteButton" class="btn-sm btn-danger" style="display: none" type="submit">
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     {% endfor %}
 </div>

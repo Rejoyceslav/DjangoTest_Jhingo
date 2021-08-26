@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
+from django.views.generic import ListView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .models import *
-from .forms import *
+from .models import ToDoList
+from .forms import ToDoListForm
 
 
 class ToDoMain(View):
@@ -26,7 +28,7 @@ class ToDoMain(View):
         return redirect(request.path)  # redirects to request's path, <form action=''> in html has to be empty
 
 
-class ToDoUpdate(View):
+class ToDoUpdate(LoginRequiredMixin, View):
     def get(self, request, pk):  # get request comes here, pk = primary key
         item = ToDoList.objects.get(id=pk)
         form = ToDoListForm(instance=item)
@@ -44,7 +46,7 @@ class ToDoUpdate(View):
         return redirect('todo_main')  # 'todo_main' is url name from urls
 
 
-class ToDoDelete(View):
+class ToDoDelete(LoginRequiredMixin, View):
     def get(self, request, pk):  # get request comes here, pk = primary key
         # item = ToDoList.objects.get(id=pk)
         item = get_object_or_404(ToDoList, id=pk)  # if object is not found, show 404
@@ -56,3 +58,17 @@ class ToDoDelete(View):
         item.delete()
 
         return redirect('todo_main')  # 'to_do_main' is url name from urls
+
+
+# Rebuild with ListView:
+
+# class ToDoList(ListView):
+#
+#     model = ToDoList
+#     context_object_name = 'title'
+#
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#
+#
+#         return context

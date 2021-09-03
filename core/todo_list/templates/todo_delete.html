@@ -5,27 +5,27 @@
 <h2>
     Delete this task?
 </h2>
-<h3 style="color: #00bfbf">
-    "{{item}}"
-</h3>
+<h3 style="color: #00bfbf; word-break: break-word">"{{item}}"</h3>
 
-<div class="grid-container-twobuttons">
+<div class="grid-container-two-buttons">
 
-        <form action="{% url 'todo_main' %}">
-    <span>
-        <input class="btn-sm btn-info" style="float: left" type="submit" value="cancel">
-    </span>
-        </form>
+    <form action="{% url 'todo_main' %}">
+        <span>
+            <input class="btn-sm btn-info" style="float: left" type="submit" value="cancel">
+        </span>
+    </form>
 
-    <span>
-    </span>
+    <div>
 
-        <form method="POST" action="">
-    <span class="center-this">
-    {% csrf_token %}
-        <input class="btn-sm btn-danger" style="float: right" type="submit" value="delete" name="Delete">
-    </span>
-        </form>
+    </div>
+
+    <form method="POST" action="">
+        <span class="center-this">
+        {% csrf_token %}
+            <input class="btn-sm btn-danger" style="float: right" type="submit" value="delete" name="Delete">
+        </span>
+    </form>
 </div>
+
 
 {% endblock info_content %}

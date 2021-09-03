@@ -2,9 +2,29 @@
 {% load static %}
 
 {% block content %}
-<h1>Test</h1>
-<div class="tooltip-wrapper">
-    <a class="btn btn-sm btn-info" style="" href="{% url 'home' %}"><i class="bi-pencil-square"></i></a>
-    <div class="tooltip-box">Tooltip text</div>
+
+<div class="container-fluid">
+    <div class="center-column" style="max-width:650px">
+
+<!--        <h1>Test</h1>-->
+<!--        <div class="tooltip-wrapper">-->
+<!--            <a class="btn btn-sm btn-info" style="" href="{% url 'home' %}"><i class="bi-pencil-square"></i></a>-->
+<!--            <div class="tooltip-box">Tooltip text</div>-->
+<!--        </div>-->
+
+
+        <form method="POST">
+            <span>{{ form.title.label }}:</span>
+            {{ form.title }}
+            <span>{{ form.description.label }}:</span>
+            {{ form.description }}
+            <span>{{ form.complete.label }}:</span>
+            {{ form.complete }}
+            <span>{{ form.show_task.label }}:</span>
+            {{ form.show_task }}
+            <input class="input-dark" type="submit" value="Save">
+        </form>
+
+    </div>
 </div>
 {% endblock content %}

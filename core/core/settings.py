@@ -39,11 +39,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'django_filters',
+    
     'main',
     'test',
     'word_counter',
     'todo_list',
     'login',
+    'tasks',
 ]
 
 MIDDLEWARE = [
@@ -62,12 +66,14 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
+            path.join(BASE_DIR, ''),
             path.join(BASE_DIR, 'templates'),
             path.join(BASE_DIR, 'main/templates'),
             path.join(BASE_DIR, 'test/templates'),
             path.join(BASE_DIR, 'word_counter/templates'),
             path.join(BASE_DIR, 'todo_list/templates'),
             path.join(BASE_DIR, 'login/templates'),
+            path.join(BASE_DIR, 'tasks/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {

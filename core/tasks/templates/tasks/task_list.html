@@ -1,0 +1,184 @@
+{% extends 'base.html' %}
+
+{% load tasks_tags %}
+
+{% block content %}
+<!--suppress XmlDuplicatedId -->
+<div class="center-column" style="max-width:800px">
+
+    <h1>Tasks</h1>
+    <div class="actions-row">
+
+        <div style="flex: 0 1 100000000px;">
+            <form method="GET" action="/tasks/">
+                <input class="input-dark" style="height: 50px" type="text" name="search" placeholder="search...">
+            </form>
+        </div>
+
+        <div class="separator-vertical"></div>
+
+        <div class="actions-row-buttons">
+
+            <form action="{% url 'tasks_create' %}">
+
+                <div class="separator-vertical"></div>
+
+                <div class="tooltip-wrapper" style="white-space: nowrap">
+                    <button class="btn-lg btn-info" style="position: relative; bottom: -5px" id="inputNewTaskButton">New task</button>
+                    <div class="tooltip-box" style="margin-left: -25px;">New task</div>
+                    <input aria-labelledby="inputNewTaskButton" style="display: none" type="submit">
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    {% for task in tasks %}
+    {% if task.complete == False %}
+    <div class="task-main">
+    {% else %}
+    <div class="task-main tm-completed">
+    {% endif %}
+
+        <div class="task-container">
+
+            <div class="task-container-row1">
+
+                <div class="task-title">
+                    {% if task.complete == False %}
+                    <p class="task-title-text">{{task.title|linebreaksbr}}</p>
+                    {% else %}
+                    <p class="task-title-text ttt-completed">{{task.title|linebreaksbr}}</p>
+                    {% endif %}
+                </div>
+
+                <div class="task-buttons">
+
+                    <div class="separator-vertical"></div>
+
+                    <div class="tooltip-wrapper"> <!-- eye button -->
+                        {% if task.complete == False %}
+                        <button onclick="showHide_id({{task.id}})" class="btn-info" id="inputShowHideButton"><i class="bi-eye"></i></button>
+                        {% else %}
+                        <button onclick="showHide_id({{task.id}})" class="btn-info overlay" id="inputShowHideButton"><i class="bi-eye"></i></button>
+                        {% endif %}
+                        <div class="tooltip-box" style="margin-left: -25px;">Show/Hide</div>
+                        <input aria-labelledby="inputShowHideButton" style="display: none" type="submit">
+                    </div>
+
+                    <div class="separator-vertical"></div>
+
+                    <form action="{% url 'tasks_detail' task.id %}"> <!-- details button -->
+                        <div class="tooltip-wrapper">
+                            {% if task.complete == False %}
+                            <button class="btn-info" id="inputDetailButton"><i class="bi-info-lg"></i></button>
+                            {% else %}
+                            <button class="btn-info overlay" id="inputDetailButton"><i class="bi-info-lg"></i></button>
+                            {% endif %}
+                            <div class="tooltip-box" style="margin-left: -25px;">Details</div>
+                            <input aria-labelledby="inputDetailButton" style="display: none" type="submit">
+                        </div>
+                    </form>
+
+                    <div class="separator-vertical"></div>
+
+                    <form action="{% url 'tasks_edit' task.id %}"> <!-- edit button -->
+                        <div class="tooltip-wrapper">
+                            {% if task.complete == False %}
+                            <button class="btn-info" id="inputEditButton"><i class="bi-vector-pen"></i></button>
+                            {% else %}
+                            <button class="btn-info overlay" id="inputEditButton"><i class="bi-vector-pen"></i></button>
+                            {% endif %}
+                            <div class="tooltip-box" style="margin-left: -25px;">Edit</div>
+                            <input aria-labelledby="inputEditButton" style="display: none" type="submit">
+                        </div>
+                    </form>
+
+                    <div class="separator-vertical"></div>
+
+                    <form action="{% url 'tasks_delete' task.id %}"> <!-- delete button -->
+                        <div class="tooltip-wrapper">
+                            {% if task.complete == False %}
+                            <button class="btn-danger" id="inputDeleteButton"><i class="bi-trash"></i></button>
+                            {% else %}
+                            <button class="btn-danger overlay" id="inputDeleteButton"><i class="bi-trash"></i></button>
+                            {% endif %}
+                            <div class="tooltip-box" style="margin-left: -25px;">Delete</div>
+                            <input aria-labelledby="inputDeleteButton" style="display: none" type="submit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="task-container-row2" id="task-row2-id-{{task.id}}">
+
+                <div class="task-description">
+                    {% if task.complete == False %}
+                    <p class="task-description-text">{{task.description|linebreaksbr}}</p>
+                    {% else %}
+                    <p class="task-description-text tdt-completed">{{task.description|linebreaksbr}}</p>
+                    {% endif %}
+                </div>
+
+                <div>
+                <!-- intentionally empty -->
+                </div>
+
+            </div>
+
+            <div class="task-container-row3" id="task-row3-id-{{task.id}}">
+
+                {% if task.complete == False %}
+                <div class="task-tags">
+                {% else %}
+                <div class="task-tags overlay">
+                {% endif %}
+
+                {% for tag in task.tags.all %}
+                {% if task.complete == False %}
+                <div class="tag">{{tag}}</div>
+                {% else %}
+                <p class="tag">{{tag}}</p>
+                {% endif %}
+
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    {% empty %}
+    <h3>No tasks found</h3>
+    {% endfor %}
+
+    <script type="text/javascript">
+        function showHide_id(id) {
+            var x = document.getElementById("task-row2-id-"+id);
+            if (x.style.display === "none") {
+                x.style.display = "flex";
+            } else {
+                x.style.display = "none";
+            }
+            var y = document.getElementById("task-row3-id-"+id);
+            if (y.style.display === "none") {
+                y.style.display = "flex";
+            } else {
+                y.style.display = "none";
+            }
+        }
+
+    </script>
+</div>
+
+{% endblock content %}
+
+<!--icons:-->
+<!--bi-check-square - for completed tasks-->
+<!--bi-info-square - for details-->
+<!--bi-eye - for show task-->
+<!--bi-eye-fill - for hide task-->
+<!--bi-tags - for adding a tag-->
+
+<!--ideas:-->
+<!--add quick note (just title) with form on main list, and button for a bigger note-->

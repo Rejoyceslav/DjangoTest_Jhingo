@@ -15,15 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from todo_list.views import  ToDoMain
+from todo_list.views import ToDoMain
+from tasks.views import TaskList
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', ToDoMain.as_view(), name='home'),
+    path('', TaskList.as_view(), name='home'),
     path('', include('main.urls')),
     path('', include('word_counter.urls')),
     path('', include('test.urls')),
     path('', include('todo_list.urls')),
     path('', include('login.urls')),
+    path('', include('tasks.urls')),
 ]

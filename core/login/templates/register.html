@@ -2,9 +2,14 @@
 
 {% block info_content %}
 
-<p>Login:</p>
-<p>Password:</p>
-<p>Repeat password:</p>
-<p>E-mail:</p>
+<h2>Register</h2>
+<div class="content-text" style="color: red">
+    <form method="POST">
+        {% csrf_token %}
+        <p>{{form.as_p}}</p>
+        <input class="btn btn-info" type="submit" value="Register">
+    </form>
+</div>
+<span>Already registered? <a href = "{% url 'login_main' %}">Log in</a></span>
 
 {% endblock info_content %}

@@ -10,39 +10,38 @@
         <form method="POST">
             {% csrf_token %}
             {{form.title}}
-            <input class="btn btn-info" type="submit" value="add item" name="Add Item">
+            <input class="btn-info" type="submit" value="add item" name="Add Item">
         </form>
         </div>
     </div>
     {% for item in items_in_list %}
-    <div class="column-for-item-row">
-        <div class="container-fluid item-row grid-container-todomain">
+        <div class="item-row grid-for-item-row">
             <span style="flex: 1 1 auto">
                 {% if item.complete == True %}
-                <strike style="word-break: break-word;">{{item}}</strike>
+                <strike style="word-break: break-word;">{{item|linebreaksbr}}</strike>
                 {% else %}
-                <span style="word-break: break-word;">{{item}}</span>
+                <span style="word-break: break-word;">{{item|linebreaksbr}}</span>
                 {% endif %}
             </span>
             <div class="grid-container-onecolumn">
                 <form action="{% url 'todo_update' item.id %}">
                     <div class="tooltip-wrapper">
-                        <a class="btn btn-sm btn-info" style="" href="{% url 'todo_update' item.id %}"><i class="bi-pencil-square"></i></a>
-                        <div class="tooltip-box" style="">Edit</div>
+                        <button class="btn-info" id="inputUpdateButton"><i class="bi-pencil-square"></i></button>
+                        <div class="tooltip-box" style="margin-left: -25px;">Update</div>
+                        <input aria-labelledby="inputUpdateButton" style="display: none" type="submit">
                     </div>
                 </form>
-                <div class="separator">
+                <div class="separator-horizontal">
                 </div>
                 <form action="{% url 'todo_delete' item.id %}">
                     <div class="tooltip-wrapper">
-                        <button class="btn-sm btn-danger" style="" id="inputDeleteButton"><i class="bi-trash"></i></button>
+                        <button class="btn-danger" id="inputDeleteButton"><i class="bi-trash"></i></button>
                         <div class="tooltip-box" style="margin-left: -18px;">Delete</div>
-                        <input aria-labelledby="inputDeleteButton" class="btn-sm btn-danger" style="display: none" type="submit">
+                        <input aria-labelledby="inputDeleteButton" style="display: none" type="submit">
                     </div>
                 </form>
             </div>
-        </div>
     </div>
     {% endfor %}
 </div>
-{% endblock content %}
+{% endblock %}

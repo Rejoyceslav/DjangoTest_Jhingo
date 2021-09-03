@@ -1,0 +1,42 @@
+{% extends 'info_page.html' %}
+
+{% block info_content %}
+<h2>Task</h2>
+
+<div>
+    <form method="POST" id="CreateEditForm">
+        {% csrf_token %}
+        <span>{{ form.title.label }}:</span>
+        {{ form.title }}
+        <span>{{ form.description.label }}:</span>
+        {{ form.description }}
+        <span>{{ form.tags.label }} (ctrl+click for multiple):</span>
+        <div>{{ form.tags }}</div>
+        <span>{{ form.complete.label }}:</span>
+        {{ form.complete }}
+        <span>{{ form.show_task.label }}:</span>
+        {{ form.show_task }}
+    </form>
+</div>
+
+<div class="separator-horizontal" style="border-top: 8px solid transparent;"></div>
+
+
+<div class="grid-container-two-buttons">
+
+    <form action="{% url 'tasks_list' %}">
+        <span>
+            <input class="btn-sm btn-danger" style="float: left" type="submit" value="cancel">
+        </span>
+    </form>
+
+    <span>    </span>
+
+    <span>
+        {% csrf_token %}
+        <input form="CreateEditForm" class="btn-sm btn-info" style="float: right" type="submit" value="save">
+    </span>
+
+</div>
+
+{% endblock info_content %}

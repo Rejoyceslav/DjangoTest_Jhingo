@@ -1,0 +1,31 @@
+{% extends 'info_page.html' %}
+
+{% block info_content %}
+<div>
+
+    <h2>Manage folders</h2>
+
+    <form method="POST" id="FoldersForm">
+        {% csrf_token %}
+        <span>Folder {{ form.name.label }}:</span>
+        {{ form.name }}
+    </form>
+
+    <div class="grid-container-two-buttons">
+
+        <form action="{% url 'tasks_list' %}">
+            <span>
+                <input class="btn-sm btn-danger" style="float: left" type="submit" value="cancel">
+            </span>
+        </form>
+
+        <span>    </span>
+
+        <span>
+            <input form="FoldersForm" class="btn-sm btn-info" style="float: right" type="submit" value="save">
+        </span>
+
+    </div>
+
+</div>
+{% endblock info_content %}

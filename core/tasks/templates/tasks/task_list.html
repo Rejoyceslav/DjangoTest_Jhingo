@@ -7,28 +7,56 @@
 <div class="center-column" style="max-width:800px">
 
     <h1>Tasks</h1>
-    <div class="actions-row">
+
+    <div class="actions-container-row1">
 
         <div style="flex: 0 1 100000000px;">
+            <div class="search-icon"><i class="bi bi-search"></i></div>
             <form method="GET" action="/tasks/">
-                <input class="input-dark" style="height: 50px" type="text" name="search" placeholder="search...">
+                <input class="input-search input-dark" style="height: 50px; font-size: 18px" type="text" name="search">
             </form>
         </div>
 
-        <div class="separator-vertical"></div>
+        <div class="actions-row1-buttons">
 
-        <div class="actions-row-buttons">
+            <div class="separator-vertical"></div>
 
             <form action="{% url 'tasks_create' %}">
+            <div class="tooltip-wrapper" style="white-space: nowrap">
+                <button class="btn-lg btn-info" style="position: relative; bottom: -5px" id="inputNewTaskButton">New task</button>
+                <div class="tooltip-box" style="margin-left: -25px;">New task</div>
+                <input aria-labelledby="inputNewTaskButton" style="display: none" type="submit">
+            </div>
+            </form>
 
-                <div class="separator-vertical"></div>
+        </div>
+    </div>
 
+    <div class="actions-container-row2">
+
+        <div class="task-title">
+            <p></p>
+        </div>
+
+        <div class="actions-row2-buttons">
+
+            <form action="{% url 'tasks_tags' %}"> <!-- edit button -->
                 <div class="tooltip-wrapper" style="white-space: nowrap">
-                    <button class="btn-lg btn-info" style="position: relative; bottom: -5px" id="inputNewTaskButton">New task</button>
-                    <div class="tooltip-box" style="margin-left: -25px;">New task</div>
-                    <input aria-labelledby="inputNewTaskButton" style="display: none" type="submit">
+                    <button class="btn-info" id="inputEditButton"><i class="bi-tags"></i></button>
+                    <div class="tooltip-box" style="margin-left: -25px;">Manage tags</div>
+                    <input aria-labelledby="inputEditButton" style="display: none" type="submit">
                 </div>
             </form>
+
+            <div class="separator-vertical"></div>
+
+           <form action="{% url 'tasks_folders' %}"> <!-- edit button -->
+                <div class="tooltip-wrapper" style="white-space: nowrap">
+                    <button class="btn-info" id="inputEditButton"><i class="bi-folder"></i></button>
+                    <div class="tooltip-box" style="margin-left: -25px;">Manage folders</div>
+                    <input aria-labelledby="inputEditButton" style="display: none" type="submit">
+                </div>
+           </form>
 
         </div>
     </div>
@@ -41,6 +69,7 @@
     {% endif %}
 
         <div class="task-container">
+
 
             <div class="task-container-row1">
 
@@ -58,27 +87,27 @@
 
                     <div class="tooltip-wrapper"> <!-- eye button -->
                         {% if task.complete == False %}
-                        <button onclick="showHide_id({{task.id}})" class="btn-info" id="inputShowHideButton"><i class="bi-eye"></i></button>
+                        <button onclick="showHide_id({{task.id}})" class="btn-info" id="inputShowHideButton" type="submit"><i class="bi-eye"></i></button>
                         {% else %}
-                        <button onclick="showHide_id({{task.id}})" class="btn-info overlay" id="inputShowHideButton"><i class="bi-eye"></i></button>
+                        <button onclick="showHide_id({{task.id}})" class="btn-info overlay" id="inputShowHideButton" type="submit"><i class="bi-eye"></i></button>
                         {% endif %}
                         <div class="tooltip-box" style="margin-left: -25px;">Show/Hide</div>
                         <input aria-labelledby="inputShowHideButton" style="display: none" type="submit">
                     </div>
 
-                    <div class="separator-vertical"></div>
+<!--                    <div class="separator-vertical"></div>-->
 
-                    <form action="{% url 'tasks_detail' task.id %}"> <!-- details button -->
-                        <div class="tooltip-wrapper">
-                            {% if task.complete == False %}
-                            <button class="btn-info" id="inputDetailButton"><i class="bi-info-lg"></i></button>
-                            {% else %}
-                            <button class="btn-info overlay" id="inputDetailButton"><i class="bi-info-lg"></i></button>
-                            {% endif %}
-                            <div class="tooltip-box" style="margin-left: -25px;">Details</div>
-                            <input aria-labelledby="inputDetailButton" style="display: none" type="submit">
-                        </div>
-                    </form>
+<!--                    <form action="{% url 'tasks_detail' task.id %}"> &lt;!&ndash; details button &ndash;&gt;-->
+<!--                        <div class="tooltip-wrapper">-->
+<!--                            {% if task.complete == False %}-->
+<!--                            <button class="btn-info" id="inputDetailButton"><i class="bi-info-lg"></i></button>-->
+<!--                            {% else %}-->
+<!--                            <button class="btn-info overlay" id="inputDetailButton"><i class="bi-info-lg"></i></button>-->
+<!--                            {% endif %}-->
+<!--                            <div class="tooltip-box" style="margin-left: -25px;">Details</div>-->
+<!--                            <input aria-labelledby="inputDetailButton" style="display: none" type="submit">-->
+<!--                        </div>-->
+<!--                    </form>-->
 
                     <div class="separator-vertical"></div>
 
@@ -107,10 +136,31 @@
                             <input aria-labelledby="inputDeleteButton" style="display: none" type="submit">
                         </div>
                     </form>
+
+                    <div class="separator-vertical"></div>
+
+                    <!-- details icon-->
+                    <div class="tooltip-wrapper">
+                        {% if task.complete == False %}
+                         <div class="fake-info-btn" id="infoIcon"><i class="bi-info-square"></i></div>
+                        {% else %}
+                         <div class="fake-info-btn overlay" id="infoIcon"><i class="bi-info-square"></i></div>
+                        {% endif %}
+                        <div class="tooltip-box" style="margin-left: -200px;"> <!-- tooltip message -->
+                            <p>Created: {{task.create}}</p>
+                            <p>Completed: {{task.complete}}</p>
+                            Show task: {{task.show_task}}
+                        </div>
+                        <label aria-labelledby="infoIcon" style="display: none"></label>
+                    </div>
                 </div>
             </div>
 
+            {% if task.show_task %}
             <div class="task-container-row2" id="task-row2-id-{{task.id}}">
+            {% else %}
+            <div class="task-container-row2" id="task-row2-id-{{task.id}}" style="display: none">
+            {% endif %}
 
                 <div class="task-description">
                     {% if task.complete == False %}
@@ -126,7 +176,11 @@
 
             </div>
 
+            {% if task.show_task %}
             <div class="task-container-row3" id="task-row3-id-{{task.id}}">
+            {% else %}
+            <div class="task-container-row3" id="task-row3-id-{{task.id}}" style="display: none">
+            {% endif %}
 
                 {% if task.complete == False %}
                 <div class="task-tags">
@@ -135,16 +189,18 @@
                 {% endif %}
 
                 {% for tag in task.tags.all %}
+
                 {% if task.complete == False %}
                 <div class="tag">{{tag}}</div>
                 {% else %}
-                <p class="tag">{{tag}}</p>
+                <div class="tag">{{tag}}</div>
                 {% endif %}
 
                 {% endfor %}
                 </div>
             </div>
         </div>
+
 
     </div>
 

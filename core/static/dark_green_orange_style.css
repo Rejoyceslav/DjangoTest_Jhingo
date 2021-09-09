@@ -184,20 +184,43 @@ input[type=submit]{
 
 .select-multiple-field {
     display: flex;
-    padding: 5px;
-    width: 80px auto;
-    height: 165px;
-    border-radius: 0px;
+    padding: 2px;
+    width: auto;
+    height: auto; /* 25px per tag */
+    border-radius: 4px;
     resize: none;
     cursor: pointer;
 }
 
+.select-multiple-field option {
+    background: #242729;
+}
+
 .select-multiple-field option:hover {
     background-color: #153232;
+    cursor: pointer;
+    box-shadow: 0 0 10px 100px #1882A8 inset;
 }
 
 .select-multiple-field option:checked {
-    background: red;
+    background-color: #153232;
+    cursor: pointer;
+    box-shadow: 0 0 10px 100px #1882A8 inset;
+}
+
+.input-search { /*overriding input-dark*/
+    padding-left: 45px;
+    color: fff !important;
+}
+
+.search-icon {
+    height: 0px;
+    color: orange;
+    position: relative;
+    left: 12px;
+    top: 11px;
+    font-size: 25px;
+    pointer-events: none;
 }
 
 /*********************************/
@@ -264,20 +287,27 @@ input[type=submit]{
     color: black;
     box-shadow: 0px 0px 1px #777;
 }
-*/
-/* end BUTTONS */
+
+.fake-info-btn {
+    font-size: 29px;
+    color: #32675a;
+    position: relative;
+    top: -8px;
+    height: 0px;
+    cursor: help;
+}
 
 /*********************************/
 /*           INFO-BOX            */
 /*********************************/
 .info-box {
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    margin-left: 0px;
-    border: 2px solid red;
+    margin: 0px 30px;
+    color: orange;
 }
 
+.info-box p {
+    color: orange;
+}
 /*********************************/
 /*         TO-DO LIST            */
 /*********************************/
@@ -334,15 +364,26 @@ input[type=submit]{
 /*********************************/
 /*             TASKS             */
 /*********************************/
-.actions-row {
+.actions-container-row1 {
     display: flex;
-
     margin: 5px;
     padding: 5px;
 }
 
-.actions-row-buttons {
+.actions-container-row2 {
     display: flex;
+    margin: 5px;
+    padding: 5px;
+}
+
+.actions-row1-buttons {
+    display: flex;
+}
+
+.actions-row2-buttons {
+    display: flex;
+    background-color: transparent;
+    justify-content: right;
 }
 
 .task-main {
@@ -369,6 +410,10 @@ input[type=submit]{
     height: auto;
     opacity: .3;
     z-index: 100;
+}
+
+.task-container {
+
 }
 
 .task-container-row1 {
@@ -403,7 +448,9 @@ input[type=submit]{
 }
 
 .task-title-text {
-    color:    #008b8b  ;
+    color: #008b8b;
+    position: relative;
+    top: 5px;
 }
 
 .ttt-completed {
@@ -427,6 +474,7 @@ input[type=submit]{
 .task-description-text {
     color: Orange;
     word-break: break-word;
+    font-size: 100%;
 }
 
 .tdt-completed {
@@ -458,6 +506,12 @@ input[type=submit]{
 	font-size: 13px;
 	box-shadow: -3px -2px 0px 0px rgba(62,151,151,0.95), 3px 2px 0px 0px rgba(62,151,151,0.95);
 	/* offset-x | offset-y | blur-radius | spread-radius | opacity */
+}
+/*********************************/
+/*              LOGIN            */
+/*********************************/
+p span {
+    color: Orange!important;
 }
 
 /*********************************/
@@ -546,6 +600,10 @@ input[type=submit]{
 }
 
 
+/*********************************/
+/*             TABS              */
+/*********************************/
+
 
 
 
@@ -561,6 +619,10 @@ main column background: #1d1f21 dark-grey
 main item incomplete background: #153232 - dark-green
 main item complete background: #242729 - light-grey
 input background: #242729 - light-grey
+
+unused: #404040 - very light grey
+unused: #26232c - dark purple
+unused: #1e2021 - dark purple/green/grey (just dark something)
 
 borders-main: #32675a rotten-green
 borders-button-dimmed : #3e9797 - dimmed-shining-teal

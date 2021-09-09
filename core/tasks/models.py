@@ -3,7 +3,16 @@ from django.contrib.auth.models import User
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=30)
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
+    name = models.CharField(max_length=30, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
+class Folder(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
+    name = models.CharField(max_length=50, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -16,7 +25,10 @@ class Task(models.Model):
     complete = models.BooleanField(default=False)
     create = models.DateTimeField(auto_now_add=True)
     show_task = models.BooleanField(default=True)
+
+    # relationships
     tags = models.ManyToManyField(Tag, blank=True)
+    folder_selected = models.ForeignKey(Folder, on_delete=models.PROTECT, null=True, blank=True, default=None)
 
     def __str__(self):
         return self.title

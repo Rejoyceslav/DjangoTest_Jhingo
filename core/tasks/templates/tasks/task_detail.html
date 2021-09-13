@@ -1,0 +1,15 @@
+{% extends 'info_page.html' %}
+
+{% block info_content %}
+
+    <div class="center-this">
+        <h2>Details </h2>
+        <p>Title: {{task.title}}</p>
+        <p>ID: {{task.id}}</p>
+        <p>Created: {{task.create}}</p>
+        <p>Completed: {{task.complete}}</p>
+        <p>Show task: {{task.show_task}}</p>
+        <p>User: {{task.user}}</p>
+    </div>
+
+{% endblock info_content %}

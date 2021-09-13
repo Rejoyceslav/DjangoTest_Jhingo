@@ -1,0 +1,61 @@
+{% extends 'info_page.html' %}
+
+{% block info_content %}
+
+<h2>Task</h2>
+
+<div>
+    <form method="POST" id="CreateEditForm">
+        {% csrf_token %}
+
+        <span>{{ form.title.label }}:</span>
+        {{ form.title }}
+
+        <span>{{ form.description.label }}:</span>
+        {{ form.description }}
+
+        <div style="margin-bottom: 5px; color: orange">{{ form.tags.label }}:</div>
+        <div style="margin-bottom: 5px; padding-left: 10px">
+        {% for tag in form.tags %}
+        <span style="margin-right: 10px">{{ tag }}</span>
+        {% endfor %}
+        </div>
+
+        <div style="margin-top: 10px; display: flex">
+        <span style="padding-right: 10px; padding-top: 5px;">Folder:</span>
+        {{ form.folder_selected }}
+<!--        <div class="tooltip-wrapper">-->
+<!--        <button onclick="" class="btn-info" id="addFolderButton" style="margin-left: 2px"><i class="bi-folder-plus"></i></button>-->
+<!--        <div class="tooltip-box" style="margin-left: -25px;">add folder</div>-->
+<!--            <label aria-labelledby="addFolderButton" style="display: none"></label>-->
+<!--        </div>-->
+        </div>
+
+        <span>{{ form.complete.label }}:</span>
+        <span style="padding-left: 5px">{{ form.complete }}</span>
+        <span style="padding-left: 10px">{{ form.show_task.label }}:</span>
+        <span style="padding-left: 5px">{{ form.show_task }}</span>
+    </form>
+</div>
+
+<div class="separator-horizontal" style="border-top: 8px solid transparent;"></div>
+
+
+<div class="grid-container-two-buttons">
+
+    <form action="{% url 'tasks_list' %}">
+        <span>
+            <input class="btn-sm btn-danger" style="float: left" type="submit" value="cancel">
+        </span>
+    </form>
+
+    <span>    </span>
+
+    <span>
+        {% csrf_token %}
+        <input form="CreateEditForm" class="btn-sm btn-info" style="float: right" type="submit" value="save">
+    </span>
+
+</div>
+
+{% endblock info_content %}

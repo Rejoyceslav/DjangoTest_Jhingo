@@ -1,10 +1,31 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'info_page.html' %}
 
-{% block content %}
-<h1>Test</h1>
-<div class="tooltip-wrapper">
-    <a class="btn btn-sm btn-info" style="" href="{% url 'home' %}"><i class="bi-pencil-square"></i></a>
-    <div class="tooltip-box">Tooltip text</div>
-</div>
-{% endblock content %}
+{% block info_content %}
+
+<h2>CSS Tab</h2>
+
+
+
+    <form id="form1" runat="server">
+    <div id="tabs">
+        <ul>
+            <li><a href="#tabArticle">Article</a></li>
+            <li><a href="#tabBlog">Blog</a></li>
+        </ul>
+        <div id="tabArticle">
+            It is Article Section.
+        </div>
+        <div id="tabBlog">
+            It is Blog Section.
+        </div>
+    </div>
+    </form>
+
+<script type = "text/javascript">
+        $(document).ready(function ()
+        {
+            $("#tabs").tabs();
+        });
+</script>
+
+{% endblock info_content %}

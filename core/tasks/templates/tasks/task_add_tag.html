@@ -1,0 +1,49 @@
+{% extends 'info_page.html' %}
+
+{% block info_content %}
+<div>
+
+    <h2>Manage tags</h2>
+
+    {% include 'messages.html' %}
+
+
+    <form method="POST" id="FoldersForm">
+        {% csrf_token %}
+        <span>Tag name:</span>
+        {{ form.name }}
+        <input form="FoldersForm" class="btn-sm btn-info" type="submit" value="add tag">
+    </form>
+
+
+    <div>
+        <br>
+        <span>Your tags:</span>
+        <br>
+        <div style="padding-left: 15px;" class="input-dark">
+            {% for item in items %}
+            <span style="padding-right: 10px"> {{ item }}</span>
+            {% endfor %}
+        </div>
+        Display tags as checkboxes here, remove some useless buttons, style this properly
+        <input form="FoldersForm" class="btn-sm btn-danger" type="submit" value="remove selected">
+    </div>
+
+    <div class="grid-container-two-buttons">
+
+        <form action="{% url 'tasks_list' %}">
+            <span>
+                <input class="btn-sm btn-danger" style="float: left" type="submit" value="cancel">
+            </span>
+        </form>
+
+        <span>    </span>
+
+        <span>
+            <input form="FoldersForm" class="btn-sm btn-info" style="float: right" type="submit" value="save">
+        </span>
+
+    </div>
+
+</div>
+{% endblock info_content %}

@@ -2,10 +2,17 @@
 
 {% block info_content %}
 
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input class="btn btn-info" type="submit" value="Login">
-</form>
+<h2>Log in</h2>
 
+<div class="content-text " style="color: red">
+    <form method="POST">
+        {% csrf_token %}
+        <p>{{form.as_p}}</p>
+        <input class="btn btn-info" type="submit" value="Login">
+    </form>
+</div>
+
+<div class="center-this">
+<span>Don't have an account yet? <a href = "{% url 'register_main' %}">Register</a></span>
 {% endblock info_content %}
+</div>

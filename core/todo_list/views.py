@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from .models import ToDoList
@@ -59,16 +58,3 @@ class ToDoDelete(LoginRequiredMixin, View):
 
         return redirect('todo_main')  # 'to_do_main' is url name from urls
 
-
-# Rebuild with ListView:
-
-# class ToDoList(ListView):
-#
-#     model = ToDoList
-#     context_object_name = 'title'
-#
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#
-#
-#         return context

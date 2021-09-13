@@ -8,17 +8,24 @@
 
 <form id="update_form" method="POST">
     {% csrf_token %}
-    <div class="container-fluid grid-container-todoupdateform">
-        <span>Content:</span>
-        <span>{{form.title}}</span>
+
+    <div>
+        <div>
+            <span class="center-this">Content:</span>
+            <div>{{form.title}}</div>
+        </div>
+
+        <div style="display: flex; justify-content: left">
+            <span>Complete:</span>
+            <div style="border-left: 5px solid transparent;"></div>
+            <div style="border-top: 35px solid transparent;"></div>
+            <span>{{form.complete}}</span>
+        </div>
     </div>
-    <div class="container-fluid grid-container-todoupdateform-justify">
-        <span>Complete:</span>
-        <span style="position:relative; left:5px;">{{form.complete}}</span>
-    </div>
+
 </form>
 
-<div class="container-fluid grid-container-twobuttons">
+<div class="grid-container-two-buttons">
 
     <form action="{% url 'todo_main' %}">
         <span>
@@ -26,9 +33,7 @@
         </span>
     </form>
 
-    <span>
-        <!-- intentionally empty span -->
-    </span>
+    <div></div>
 
     <span>
         <input form="update_form" class="btn-sm btn-info" type="submit" value="update" name="Update Item">

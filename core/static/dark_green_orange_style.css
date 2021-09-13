@@ -7,10 +7,12 @@
 
 .navbar-brand {
     color: #00bfbf !important;
+
 }
 
 .nav-link {
     color: Orange !important;
+    font-size: 20px;
 }
 
 .nav-link:focus, .nav-link:hover {
@@ -23,6 +25,7 @@
     min-width: 8rem !important;
     border-radius: 0.25rem !important;
     box-shadow: 2px 2px 5px 3px rgba(30,30,50,0.75);
+    font-size: 18px;
 }
 
 .dropdown-item {
@@ -244,6 +247,7 @@ input[type=submit]{
 }
 
 .btn-danger:hover{
+    color: Orange;
     background-color: #8e663c;
     border-color: #00bfbf;
 }
@@ -254,7 +258,7 @@ input[type=submit]{
     border-color: #3e9797;
     border-width: 2px;
     font-weight: bold;
-    color: Orange !important;
+    color: Orange;
     /*font-size: 0.8vw; scales font size*/
 }
 
@@ -263,6 +267,7 @@ input[type=submit]{
 }
 
 .btn-info:hover {
+    color: Orange;
     background-color: #005959;
     border-color: #00bfbf;
 }

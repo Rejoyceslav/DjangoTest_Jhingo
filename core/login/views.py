@@ -6,6 +6,7 @@ from django.views.generic.edit import FormView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from .forms import CustomRegisterForm, CustomLoginForm
+from tasks.models import Folder
 
 
 class MainLoginView(LoginView):
@@ -28,6 +29,11 @@ class Register(FormView):
         user = form.save()
         if user is not None:
             login(self.request, user)
+
+        #  creating a "Main" folder, assigned to user, right after registering
+        folder_model = Folder(name="Main", user=self.request.user)
+        folder_model.save()
+
         return super(Register, self).form_valid(form)
 
 

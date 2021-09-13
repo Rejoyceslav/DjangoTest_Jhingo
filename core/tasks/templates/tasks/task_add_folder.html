@@ -5,9 +5,11 @@
 
     <h2>Manage folders</h2>
 
+    {% include 'messages.html' %}
+
     <form method="POST" id="FoldersForm">
         {% csrf_token %}
-        <span>Folder {{ form.name.label }}:</span>
+        <span>Folder name:</span>
         {{ form.name }}
     </form>
 

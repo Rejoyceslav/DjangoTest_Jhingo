@@ -5,10 +5,5 @@ register = template.Library()
 
 
 @register.simple_tag
-def update_show():
-    # show_instance = Task.show_task.get(id=pk)
-    # show_value = show_instance.show_task
-    # return show_value
-
-    state = "none"
-    return state
+def update_variable(value):
+    return value

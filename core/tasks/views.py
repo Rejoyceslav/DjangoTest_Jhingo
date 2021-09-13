@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.views import View
 from django.views.generic.list import ListView
@@ -38,7 +39,8 @@ class TaskList(LoginRequiredMixin, ListView):
             qs = qs.filter(
                 Q(user=self.request.user) &
                 Q(title__icontains=search_query) |
-                Q(tags__name__icontains=search_query)
+                Q(tags__name__icontains=search_query) |
+                Q(description__icontains=search_query)
                 )
 
         context = super().get_context_data(**kwargs)
@@ -113,7 +115,14 @@ class AddFolder(View):
             form.instance.user = self.request.user
             form.save()
 
-        return redirect(request.path)  # redirects to request's path, <form action=''> in html has to be empty
+            message = f'Folder \'{form.instance.name}\' created.'
+            messages.success(request, message)
+
+            return redirect(request.path)  # redirects to request's path, <form action=''> in html has to be empty
+
+        else:
+            messages.error(request, 'Something went wrong:')
+            messages.error(request, form.errors)
 
 
 class AddTagView(View):
@@ -136,5 +145,11 @@ class AddTagView(View):
             form.instance.user = self.request.user
             form.save()
 
-        return redirect(request.path)  # redirects to request's path, <form action=''> in html has to be empty
+            message = f'Tag \'{form.instance.name}\' created.'
+            messages.success(request, message)
 
+            return redirect(request.path)  # redirects to request's path, <form action=''> in html has to be empty
+
+        else:
+            messages.error(request, 'Something went wrong:')
+            messages.error(request, form.errors)

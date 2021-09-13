@@ -11,7 +11,7 @@
     <div class="actions-container-row1">
 
         <div style="flex: 0 1 100000000px;">
-            <div class="search-icon"><i class="bi bi-search"></i></div>
+            <div class="search-icon"><i class="mdi mdi-file-search-outline"></i></div>
             <form method="GET" action="/tasks/">
                 <input class="input-search input-dark" style="height: 50px; font-size: 18px" type="text" name="search">
             </form>
@@ -23,7 +23,7 @@
 
             <form action="{% url 'tasks_create' %}">
             <div class="tooltip-wrapper" style="white-space: nowrap">
-                <button class="btn-lg btn-info" style="position: relative; bottom: -5px" id="inputNewTaskButton">New task</button>
+                <button class="btn-lg btn-info" style="position: relative; bottom: -5px" id="inputNewTaskButton"><i class="mdi mdi-file-edit-outline"></i> New task</button>
                 <div class="tooltip-box" style="margin-left: -25px;">New task</div>
                 <input aria-labelledby="inputNewTaskButton" style="display: none" type="submit">
             </div>
@@ -40,9 +40,25 @@
 
         <div class="actions-row2-buttons">
 
-            <form action="{% url 'tasks_tags' %}"> <!-- edit button -->
+            <div class="tooltip-wrapper" style="white-space: nowrap"> <!--expand ann button-->
+                <button onclick="expand_all()" class="btn-info" id="collapseAllButton" type="submit"><i class="bi-arrows-expand"></i></button>
+                <div class="tooltip-box" style="margin-left: -25px;">Expand all</div>
+                <input aria-labelledby="collapseAllButton" style="display: none" type="submit">
+            </div>
+
+            <div class="separator-vertical"></div>
+
+            <div class="tooltip-wrapper" style="white-space: nowrap"> <!--collapse all button-->
+                <button onclick="collapse_all()" class="btn-info" id="collapseAllButton" type="submit"><i class="bi-arrows-collapse"></i></button>
+                <div class="tooltip-box" style="margin-left: -25px;">Collapse all</div>
+                <input aria-labelledby="collapseAllButton" style="display: none" type="submit">
+            </div>
+
+            <div class="separator-vertical"></div>
+
+            <form action="{% url 'tasks_tags' %}"> <!-- manage tags button -->
                 <div class="tooltip-wrapper" style="white-space: nowrap">
-                    <button class="btn-info" id="inputEditButton"><i class="bi-tags"></i></button>
+                    <button class="btn-info" id="inputEditButton" style="background-color: #126362; border-color: ;"><i class="bi-tags"></i></button>
                     <div class="tooltip-box" style="margin-left: -25px;">Manage tags</div>
                     <input aria-labelledby="inputEditButton" style="display: none" type="submit">
                 </div>
@@ -50,9 +66,9 @@
 
             <div class="separator-vertical"></div>
 
-           <form action="{% url 'tasks_folders' %}"> <!-- edit button -->
+           <form action="{% url 'tasks_folders' %}"> <!-- manage folder button -->
                 <div class="tooltip-wrapper" style="white-space: nowrap">
-                    <button class="btn-info" id="inputEditButton"><i class="bi-folder"></i></button>
+                    <button class="btn-info" id="inputEditButton" style="background-color: #126362; border-color: ;"><i class="bi-folder"></i></button>
                     <div class="tooltip-box" style="margin-left: -25px;">Manage folders</div>
                     <input aria-labelledby="inputEditButton" style="display: none" type="submit">
                 </div>
@@ -69,7 +85,6 @@
     {% endif %}
 
         <div class="task-container">
-
 
             <div class="task-container-row1">
 
@@ -139,12 +154,11 @@
 
                     <div class="separator-vertical"></div>
 
-                    <!-- details icon-->
-                    <div class="tooltip-wrapper">
+                    <div class="tooltip-wrapper">   <!-- details icon-->
                         {% if task.complete == False %}
                          <div class="fake-info-btn" id="infoIcon"><i class="bi-info-square"></i></div>
-                        {% else %}
-                         <div class="fake-info-btn overlay" id="infoIcon"><i class="bi-info-square"></i></div>
+                        {% else %}           <!-- removing style from div below should work as it does with it -->
+                         <div class="fake-info-btn overlay" id="infoIcon" style="top: -8px; height: 0px;"><i class="bi-info-square"></i></div>
                         {% endif %}
                         <div class="tooltip-box" style="margin-left: -200px;"> <!-- tooltip message -->
                             <p>Created: {{task.create}}</p>
@@ -208,23 +222,6 @@
     <h3>No tasks found</h3>
     {% endfor %}
 
-    <script type="text/javascript">
-        function showHide_id(id) {
-            var x = document.getElementById("task-row2-id-"+id);
-            if (x.style.display === "none") {
-                x.style.display = "flex";
-            } else {
-                x.style.display = "none";
-            }
-            var y = document.getElementById("task-row3-id-"+id);
-            if (y.style.display === "none") {
-                y.style.display = "flex";
-            } else {
-                y.style.display = "none";
-            }
-        }
-
-    </script>
 </div>
 
 {% endblock content %}

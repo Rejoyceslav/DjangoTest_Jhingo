@@ -9,14 +9,14 @@
             <input aria-labelledby="backButton" style="display: none" type="submit">
         </div>
 
-        <h2 style="padding-left: 20px; font-size: 37px">Delete this task?</h2>
+        <h2 style="padding-left: 20px; font-size: 37px">Delete this tag?</h2>
     </div>
 
-    <h3 style="color: DarkCyan">"{{task.title|linebreaksbr}}"</h3>
+    <h3 style="color: DarkCyan">"{{tag.name|linebreaksbr}}"</h3>
 
     <div class="grid-container-two-buttons">
 
-        <form action="{% url 'tasks_list' %}">
+        <form action="{% url 'tasks_tags' %}">
             <span>
                 <input class="btn-sm btn-info" style="float: left" type="submit" value="cancel">
             </span>

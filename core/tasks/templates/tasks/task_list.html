@@ -58,7 +58,7 @@
 
             <form action="{% url 'tasks_tags' %}"> <!-- manage tags button -->
                 <div class="tooltip-wrapper" style="white-space: nowrap">
-                    <button class="btn-info" id="inputEditButton" style="background-color: #126362; border-color: ;"><i class="bi-tags"></i></button>
+                    <button class="btn-info" id="inputEditButton"><i class="bi-tags"></i></button>
                     <div class="tooltip-box" style="margin-left: -25px;">Manage tags</div>
                     <input aria-labelledby="inputEditButton" style="display: none" type="submit">
                 </div>
@@ -68,7 +68,7 @@
 
            <form action="{% url 'tasks_folders' %}"> <!-- manage folder button -->
                 <div class="tooltip-wrapper" style="white-space: nowrap">
-                    <button class="btn-info" id="inputEditButton" style="background-color: #126362; border-color: ;"><i class="bi-folder"></i></button>
+                    <button class="btn-info" id="inputEditButton"><i class="bi-folder"></i></button>
                     <div class="tooltip-box" style="margin-left: -25px;">Manage folders</div>
                     <input aria-labelledby="inputEditButton" style="display: none" type="submit">
                 </div>
@@ -161,9 +161,14 @@
                          <div class="fake-info-btn overlay" id="infoIcon" style="top: -8px; height: 0px;"><i class="bi-info-square"></i></div>
                         {% endif %}
                         <div class="tooltip-box" style="margin-left: -200px;"> <!-- tooltip message -->
-                            <p>Created: {{task.create}}</p>
-                            <p>Completed: {{task.complete}}</p>
-                            Show task: {{task.show_task}}
+                            <p>Created: <span>{{task.create}}</span></p>
+                            <p>Completed: <span>{{task.complete}}</span></p>
+                            <p>Show task: <span>{{task.show_task}}</span></p>
+                            <p>Folder: <span>{{task.folder_selected}}</span></p>
+                            <p>Tags:
+                            {% for tag in task.tags.all %}
+                                <span>{{tag}},</span>
+                            {% endfor %}</p>
                         </div>
                         <label aria-labelledby="infoIcon" style="display: none"></label>
                     </div>

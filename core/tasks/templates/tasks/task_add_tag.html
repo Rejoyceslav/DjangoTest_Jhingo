@@ -3,46 +3,51 @@
 {% block info_content %}
 <div>
 
-    <h2>Manage tags</h2>
+    <div style="display: flex; margin-bottom: 10px">
+        <div class="tooltip-wrapper" style="display: flex">
+            <a href="{% url 'tasks_list' %}"><i id="backButton" style="font-size: 30px; color: orange" class="bi-arrow-left-square"></i></a>
+            <div class="tooltip-box" style="margin-left: -25px;">Back</div>
+            <input aria-labelledby="backButton" style="display: none" type="submit">
+        </div>
+
+        <h2 style="padding-left: 20px; font-size: 37px">Manage tags</h2>
+    </div>
 
     {% include 'messages.html' %}
 
+    <div style="margin-top: 10px">Tag name:</div>
 
-    <form method="POST" id="FoldersForm">
-        {% csrf_token %}
-        <span>Tag name:</span>
-        {{ form.name }}
-        <input form="FoldersForm" class="btn-sm btn-info" type="submit" value="add tag">
-    </form>
+        <div>
+            <form method="POST" id="TagsForm">
+                {% csrf_token %}
+                {{ form.name }}
+            </form>
+        </div>
 
+        <div>
+            <input form="TagsForm" class="btn-info" type="submit" value="add tag">
+        </div>
 
     <div>
         <br>
-        <span>Your tags:</span>
+        <span>Available tags:</span>
         <br>
-        <div style="padding-left: 15px;" class="input-dark">
-            {% for item in items %}
-            <span style="padding-right: 10px"> {{ item }}</span>
+        <div style="padding-left: 15px" class="input-dark">
+            {% for tag in tags %}
+                <div style="display: flex">
+
+                    <form action="{% url 'tasks_delete_tag' tag.id %}"> <!-- delete button -->
+                        <div class="tooltip-wrapper" style="display: flex">
+                            <button class="btn-danger" id="inputDeleteButton" style="line-height: 16px;"><i class="bi-trash"></i></button>
+                            <div class="tooltip-box" style="margin-left: -25px;">Delete</div>
+                            <input aria-labelledby="inputDeleteButton" style="display: none" type="submit">
+                        </div>
+                    </form>
+                    <div class="separator-vertical"></div>
+                    <div style="padding-left: 10px">{{ tag|linebreaksbr }}</div>
+                </div>
             {% endfor %}
         </div>
-        Display tags as checkboxes here, remove some useless buttons, style this properly
-        <input form="FoldersForm" class="btn-sm btn-danger" type="submit" value="remove selected">
-    </div>
-
-    <div class="grid-container-two-buttons">
-
-        <form action="{% url 'tasks_list' %}">
-            <span>
-                <input class="btn-sm btn-danger" style="float: left" type="submit" value="cancel">
-            </span>
-        </form>
-
-        <span>    </span>
-
-        <span>
-            <input form="FoldersForm" class="btn-sm btn-info" style="float: right" type="submit" value="save">
-        </span>
-
     </div>
 
 </div>

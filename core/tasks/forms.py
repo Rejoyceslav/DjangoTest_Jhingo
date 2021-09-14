@@ -72,7 +72,7 @@ class AddFolderForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['name'].widget.attrs.update({'class': 'input-dark'})
+        self.fields['name'].widget.attrs.update({'class': 'input-dark', 'autofocus': 'True'})
 
     class Meta:
         model = Folder
@@ -84,7 +84,7 @@ class AddTagForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        self.fields['name'].widget.attrs.update({'class': 'input-dark'})
+        self.fields['name'].widget.attrs.update({'class': 'input-dark', 'autofocus': 'True'})
 
     class Meta:
         model = Tag

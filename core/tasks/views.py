@@ -98,11 +98,11 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
 class AddFolder(View):
 
     def get(self, request):  # get request comes here
-        items = Folder.objects.filter(user=self.request.user)
+        folders = Folder.objects.filter(user=self.request.user)
         form = AddFolderForm()
 
         context = {
-                    'items': items,
+                    'folders': folders,
                     'form': form,
                    }
 
@@ -128,11 +128,11 @@ class AddFolder(View):
 class AddTagView(View):
 
     def get(self, request):  # get request comes here
-        items = Tag.objects.filter(user=self.request.user)
+        tags = Tag.objects.filter(user=self.request.user)
         form = AddTagForm()
 
         context = {
-                    'items': items,
+                    'tags': tags,
                     'form': form,
                    }
 
@@ -153,3 +153,15 @@ class AddTagView(View):
         else:
             messages.error(request, 'Something went wrong:')
             messages.error(request, form.errors)
+
+
+class TagDelete(LoginRequiredMixin, DeleteView):
+    model = Tag
+    context_object_name = 'tag'
+    success_url = reverse_lazy('tasks_tags')
+
+
+class FolderDelete(LoginRequiredMixin, DeleteView):
+    model = Folder
+    context_object_name = 'folder'
+    success_url = reverse_lazy('tasks_folders')

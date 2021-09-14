@@ -242,7 +242,7 @@ input[type=submit]{
     border-color: #3e9797;
     border-width: 2px;
     font-weight: bold;
-    color: Orange;
+    color: Orange !important;
     /*font-size: 0.8vw; scales font size*/
 }
 
@@ -258,7 +258,7 @@ input[type=submit]{
     border-color: #3e9797;
     border-width: 2px;
     font-weight: bold;
-    color: Orange;
+    color: Orange !important;
     /*font-size: 0.8vw; scales font size*/
 }
 
@@ -272,8 +272,19 @@ input[type=submit]{
     border-color: #00bfbf;
 }
 
-.btn-info:focus, .btn-info:active { box-shadow: none !important; outline: none; background-color: #005959; border-color: #00bfbf;} /* removes ugly shadows on focus */
-.btn-danger:focus, .btn-danger:active { box-shadow: none !important; outline: none; background-color: #8e663c; border-color: #00bfbf; }
+.btn-info:focus, .btn-info:active {
+    box-shadow: none !important; /* removes ugly shadows on focus */
+    outline: none;
+    background-color: #005959;
+    border-color: #00bfbf;
+ }
+
+.btn-danger:focus, .btn-danger:active {
+    box-shadow: none !important; /* removes ugly shadows on focus */
+    outline: none;
+    background-color: #8e663c;
+    border-color: #00bfbf;
+ }
 
 .custom-button {
     background-color: #296363;
@@ -565,6 +576,15 @@ p span {
     -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
     -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+}
+
+.tooltip-box p span {  /* sets color of tooltip message */
+    color: orange !important;
+}
+
+.tooltip-box p {  /* sets color of tooltip message */
+    color: #008B8B !important;
+    line-height: 0.20;
 }
 
 /* allows to move over tooltip before expiring

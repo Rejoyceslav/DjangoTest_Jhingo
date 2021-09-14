@@ -3,31 +3,73 @@
 {% block info_content %}
 <div>
 
-    <h2>Manage folders</h2>
+    <div style="display: flex; margin-bottom: 10px">
+        <div class="tooltip-wrapper" style="display: flex">
+            <a href="{% url 'tasks_list' %}"><i id="backButton" style="font-size: 30px; color: orange" class="bi-arrow-left-square"></i></a>
+            <div class="tooltip-box" style="margin-left: -25px;">Back</div>
+            <input aria-labelledby="backButton" style="display: none" type="submit">
+        </div>
+
+        <h2 style="padding-left: 20px; font-size: 37px">Manage folders</h2>
+    </div>
 
     {% include 'messages.html' %}
 
-    <form method="POST" id="FoldersForm">
-        {% csrf_token %}
-        <span>Folder name:</span>
-        {{ form.name }}
-    </form>
+     <div style="margin-top: 10px">Folder name:</div>
 
-    <div class="grid-container-two-buttons">
+        <div>
+            <form method="POST" id="FoldersForm">
+                {% csrf_token %}
+                {{ form.name }}
+            </form>
+        </div>
 
-        <form action="{% url 'tasks_list' %}">
-            <span>
-                <input class="btn-sm btn-danger" style="float: left" type="submit" value="cancel">
-            </span>
-        </form>
+        <div>
+            <input form="FoldersForm" class="btn-info" type="submit" value="add folder">
+        </div>
 
-        <span>    </span>
-
-        <span>
-            <input form="FoldersForm" class="btn-sm btn-info" style="float: right" type="submit" value="save">
-        </span>
-
+    <div>
+        <br>
+        <span>Available folders:</span>
+        <br>
+        <div style="padding-left: 15px" class="input-dark">
+            {% for folder in folders %}
+                <div style="display: flex">
+                    <form action="{% url 'tasks_delete_folder' folder.id %}"> <!-- delete button -->
+                        <div class="tooltip-wrapper" style="display: flex">
+                            <button class="btn-danger" id="inputDeleteButton" style="line-height: 16px;"><i class="bi-trash"></i></button>
+                            <div class="tooltip-box" style="margin-left: -25px;">Delete</div>
+                            <input aria-labelledby="inputDeleteButton" style="display: none" type="submit">
+                        </div>
+                    </form>
+                    <div class="separator-vertical"></div>
+                    <div style="padding-left: 10px">{{ folder|linebreaksbr }}</div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
+
+<!--    <form method="POST" id="FoldersForm">-->
+<!--        {% csrf_token %}-->
+<!--        <span>Folder name:</span>-->
+<!--        {{ form.name }}-->
+<!--    </form>-->
+
+<!--    <div class="grid-container-two-buttons">-->
+
+<!--        <form action="{% url 'tasks_list' %}">-->
+<!--            <span>-->
+<!--                <input class="btn-sm btn-danger" style="float: left" type="submit" value="cancel">-->
+<!--            </span>-->
+<!--        </form>-->
+
+<!--        <span>    </span>-->
+
+<!--        <span>-->
+<!--            <input form="FoldersForm" class="btn-sm btn-info" style="float: right" type="submit" value="save">-->
+<!--        </span>-->
+
+<!--    </div>-->
 
 </div>
 {% endblock info_content %}

@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import TaskList, TaskDetail, TaskCreate, TaskEdit, TaskDelete, AddFolder, AddTagView, TagDelete, FolderDelete
+from .views import TaskList, TaskDetail, TaskCreate, TaskEdit, TaskDelete, AddFolderView, AddTagView, AddGroupView,\
+    TagDeleteView, FolderDeleteView, GroupDeleteView
 from .forms import CustomTaskCreate, CustomTaskEdit
 
 
@@ -9,8 +10,12 @@ urlpatterns = [
     path('tasks-create', TaskCreate.as_view(), name='tasks_create'),
     path('tasks-edit/<str:pk>', TaskEdit.as_view(), name='tasks_edit'),
     path('tasks-delete/<str:pk>', TaskDelete.as_view(), name='tasks_delete'),
-    path('tasks-folders', AddFolder.as_view(), name='tasks_folders'),
+
+    path('tasks-folders', AddFolderView.as_view(), name='tasks_folders'),
     path('tasks-tags', AddTagView.as_view(), name='tasks_tags'),
-    path('tasks-delete-tag/<str:pk>', TagDelete.as_view(), name='tasks_delete_tag'),
-    path('tasks-delete-folder/<str:pk>', FolderDelete.as_view(), name='tasks_delete_folder'),
+    path('tasks-groups', AddGroupView.as_view(), name='tasks_groups'),
+
+    path('tasks-tag-delete/<str:pk>', TagDeleteView.as_view(), name='tasks_delete_tag'),
+    path('tasks-folder-delete/<str:pk>', FolderDeleteView.as_view(), name='tasks_delete_folder'),
+    path('tasks-group-delete/<str:pk>', GroupDeleteView.as_view(), name='tasks_delete_group'),
 ]

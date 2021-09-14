@@ -8,9 +8,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.db.models import Q
 
-from .models import Task, Folder, Tag
-from .forms import CustomTaskCreate, CustomTaskEdit, AddFolderForm, AddTagForm
-from .filters import TaskFilter
+from .models import Task, Folder, Tag, Group
+from .forms import CustomTaskCreate, CustomTaskEdit, AddFolderForm, AddTagForm, AddGroupForm
+# from .filters import TaskFilter
 
 # ListView by default look for ModelName_list.html template
 # dir: app_name/templates/app_name/ModeName_list.html
@@ -95,7 +95,7 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('tasks_list')
 
 
-class AddFolder(View):
+class AddFolderView(View):
 
     def get(self, request):  # get request comes here
         folders = Folder.objects.filter(user=self.request.user)
@@ -155,13 +155,49 @@ class AddTagView(View):
             messages.error(request, form.errors)
 
 
-class TagDelete(LoginRequiredMixin, DeleteView):
+class AddGroupView(View):
+
+    def get(self, request):  # get request comes here
+        groups = Group.objects.filter(user=self.request.user)
+        form = AddGroupForm()
+
+        context = {
+                    'groups': groups,
+                    'form': form,
+                   }
+
+        return render(request, 'tasks/task_add_group.html', context)
+
+    def post(self, request):  # post request comes here
+        form = AddGroupForm(request.POST)
+
+        if form.is_valid():
+            form.instance.user = self.request.user
+            form.save()
+
+            message = f'Group \'{form.instance.name}\' created.'
+            messages.success(request, message)
+
+            return redirect(request.path)  # redirects to request's path, <form action=''> in html has to be empty
+
+        else:
+            messages.error(request, 'Something went wrong:')
+            messages.error(request, form.errors)
+
+
+class TagDeleteView(LoginRequiredMixin, DeleteView):
     model = Tag
     context_object_name = 'tag'
     success_url = reverse_lazy('tasks_tags')
 
 
-class FolderDelete(LoginRequiredMixin, DeleteView):
+class FolderDeleteView(LoginRequiredMixin, DeleteView):
     model = Folder
     context_object_name = 'folder'
     success_url = reverse_lazy('tasks_folders')
+
+
+class GroupDeleteView(LoginRequiredMixin, DeleteView):
+    model = Group
+    context_object_name = 'group'
+    success_url = reverse_lazy('tasks_groups')

@@ -10,33 +10,33 @@
             <input aria-labelledby="backButton" style="display: none" type="submit">
         </div>
 
-        <h2 style="padding-left: 20px; font-size: 37px">Manage Tags</h2>
+        <h2 style="padding-left: 20px; font-size: 37px">Manage Groups</h2>
     </div>
 
     {% include 'messages.html' %}
 
-    <div style="margin-top: 10px">Tag name:</div>
+    <div style="margin-top: 10px">Group name:</div>
 
         <div>
-            <form method="POST" id="TagsForm">
+            <form method="POST" id="GroupsForm">
                 {% csrf_token %}
                 {{ form.name }}
             </form>
         </div>
 
         <div>
-            <input form="TagsForm" class="btn-info" type="submit" value="add tag">
+            <input form="GroupsForm" class="btn-info" type="submit" value="add group">
         </div>
 
     <div>
         <br>
-        <span>Available tags:</span>
+        <span>Available groups:</span>
         <br>
         <div style="padding-left: 15px" class="input-dark">
-            {% for tag in tags %}
+            {% for group in groups %}
                 <div style="display: flex">
 
-                    <form action="{% url 'tasks_delete_tag' tag.id %}"> <!-- delete button -->
+                    <form action="{% url 'tasks_delete_group' group.id %}"> <!-- delete button -->
                         <div class="tooltip-wrapper" style="display: flex">
                             <button class="btn-danger" id="inputDeleteButton" style="line-height: 16px;"><i class="bi-trash"></i></button>
                             <div class="tooltip-box" style="margin-left: -25px;">Delete</div>
@@ -44,7 +44,7 @@
                         </div>
                     </form>
                     <div class="separator-vertical"></div>
-                    <div style="padding-left: 10px">{{ tag|linebreaksbr }}</div>
+                    <div style="padding-left: 10px">{{ group|linebreaksbr }}</div>
                 </div>
             {% endfor %}
         </div>

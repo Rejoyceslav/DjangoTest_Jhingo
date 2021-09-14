@@ -1,6 +1,6 @@
 from django.views.generic.edit import CreateView, UpdateView
 from django.forms import ModelForm
-from .models import Task, Tag, Folder
+from .models import Task, Tag, Folder, Group
 from django import forms
 
 
@@ -29,9 +29,15 @@ class CustomTaskCreate(ModelForm):
             widget=forms.Select(attrs={'class': 'input-dark select-multiple-field'})
         )
 
+        self.fields['group'] = forms.ModelChoiceField(
+            label='Group',
+            queryset=Group.objects.filter(user=user),
+            widget=forms.Select(attrs={'class': 'input-dark select-multiple-field'})
+        )
+
     class Meta:
         model = Task
-        fields = ['title', 'description', 'complete', 'show_task', 'tags', 'folder_selected']
+        fields = ['title', 'description', 'complete', 'show_task', 'tags', 'folder_selected', 'group']
 
 
 class CustomTaskEdit(ModelForm):
@@ -62,9 +68,15 @@ class CustomTaskEdit(ModelForm):
             widget=forms.Select(attrs={'class': 'input-dark select-multiple-field'})
         )
 
+        self.fields['group'] = forms.ModelChoiceField(
+            label='Group',
+            queryset=Group.objects.filter(user=user),
+            widget=forms.Select(attrs={'class': 'input-dark select-multiple-field'})
+        )
+
     class Meta:
         model = Task
-        fields = ['title', 'description', 'complete', 'show_task', 'tags', 'folder_selected']
+        fields = ['title', 'description', 'complete', 'show_task', 'tags', 'folder_selected', 'group']
 
 
 class AddFolderForm(ModelForm):
@@ -88,4 +100,16 @@ class AddTagForm(ModelForm):
 
     class Meta:
         model = Tag
+        fields = ['name']
+
+
+class AddGroupForm(ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['name'].widget.attrs.update({'class': 'input-dark', 'autofocus': 'True'})
+
+    class Meta:
+        model = Group
         fields = ['name']

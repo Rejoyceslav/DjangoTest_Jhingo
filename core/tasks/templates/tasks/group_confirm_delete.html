@@ -1,0 +1,36 @@
+{% extends 'info_page.html' %}
+
+{% block info_content %}
+<div>
+    <div style="display: flex; margin-bottom: 10px">
+        <div class="tooltip-wrapper" style="display: flex">
+            <a href="{% url 'tasks_list' %}"><i id="backButton" style="font-size: 30px; color: orange" class="bi-arrow-left-square"></i></a>
+            <div class="tooltip-box" style="margin-left: -25px;">Back</div>
+            <input aria-labelledby="backButton" style="display: none" type="submit">
+        </div>
+
+        <h2 style="padding-left: 20px; font-size: 37px">Delete this group?</h2>
+    </div>
+
+    <h3 style="color: DarkCyan">"{{group.name|linebreaksbr}}"</h3>
+
+    <div class="grid-container-two-buttons">
+
+        <form action="{% url 'tasks_groups' %}">
+            <span>
+                <input class="btn-sm btn-info" style="float: left" type="submit" value="cancel">
+            </span>
+        </form>
+
+        <span>    </span>
+
+        <form method="POST" action="">
+            <span>
+            {% csrf_token %}
+                <input class="btn-sm btn-danger" style="float: right" type="submit" value="delete">
+            </span>
+        </form>
+
+    </div>
+</div>
+{% endblock info_content %}

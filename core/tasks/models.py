@@ -18,6 +18,14 @@ class Folder(models.Model):
         return self.name
 
 
+class Group(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT, null=True, blank=True)
+    name = models.CharField(max_length=50, null=True, blank=False)
+
+    def __str__(self):
+        return self.name
+
+
 class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=False)
     title = models.CharField(max_length=70, blank=False)
@@ -28,7 +36,8 @@ class Task(models.Model):
 
     # relationships
     tags = models.ManyToManyField(Tag, blank=True)
-    folder_selected = models.ForeignKey(Folder, on_delete=models.PROTECT, null=True, blank=True, default=None)
+    folder_selected = models.ForeignKey(Folder, on_delete=models.SET_NULL, null=True, blank=True, default=None)
+    group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.title

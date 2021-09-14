@@ -58,19 +58,29 @@
 
             <form action="{% url 'tasks_tags' %}"> <!-- manage tags button -->
                 <div class="tooltip-wrapper" style="white-space: nowrap">
-                    <button class="btn-info" id="inputEditButton"><i class="bi-tags"></i></button>
+                    <button class="btn-info" id="manageTagsButton"><i class="bi-tags"></i></button>
                     <div class="tooltip-box" style="margin-left: -25px;">Manage tags</div>
-                    <input aria-labelledby="inputEditButton" style="display: none" type="submit">
+                    <input aria-labelledby="manageTagsButton" style="display: none" type="submit">
                 </div>
             </form>
 
             <div class="separator-vertical"></div>
 
-           <form action="{% url 'tasks_folders' %}"> <!-- manage folder button -->
+           <form action="{% url 'tasks_folders' %}"> <!-- manage folders button -->
                 <div class="tooltip-wrapper" style="white-space: nowrap">
-                    <button class="btn-info" id="inputEditButton"><i class="bi-folder"></i></button>
+                    <button class="btn-info" id="manageFoldersButton"><i class="bi-folder"></i></button>
                     <div class="tooltip-box" style="margin-left: -25px;">Manage folders</div>
-                    <input aria-labelledby="inputEditButton" style="display: none" type="submit">
+                    <input aria-labelledby="manageFoldersButton" style="display: none" type="submit">
+                </div>
+           </form>
+
+           <div class="separator-vertical"></div>
+
+           <form action="{% url 'tasks_groups' %}"> <!-- manage groups button -->
+                <div class="tooltip-wrapper" style="white-space: nowrap">
+                    <button class="btn-info" id="manageGroupsButton"><i class="bi-collection"></i></button>
+                    <div class="tooltip-box" style="margin-left: -25px;">Manage groups</div>
+                    <input aria-labelledby="manageGroupsButton" style="display: none" type="submit">
                 </div>
            </form>
 
@@ -165,6 +175,7 @@
                             <p>Completed: <span>{{task.complete}}</span></p>
                             <p>Show task: <span>{{task.show_task}}</span></p>
                             <p>Folder: <span>{{task.folder_selected}}</span></p>
+                            <p>Group: <span>{{task.group}}</span></p>
                             <p>Tags:
                             {% for tag in task.tags.all %}
                                 <span>{{tag}},</span>

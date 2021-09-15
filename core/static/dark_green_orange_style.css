@@ -312,6 +312,24 @@ input[type=submit]{
     cursor: help;
 }
 
+.fake-info-btn:hover {
+    color: #00bfbf;
+}
+/* butonless buttons */
+.btn-info-buttonless {
+    border: none;
+    background-color: transparent;
+    color: #BD8322;
+}
+
+.btn-info-buttonless:hover {
+    color: #00bfbf;
+}
+
+.btn-info-buttonless:focus, .btn-info-buttonless:active {
+
+    outline: none;
+ }
 /*********************************/
 /*           INFO-BOX            */
 /*********************************/
@@ -457,6 +475,7 @@ input[type=submit]{
     font-weight: bold;
     line-height: 0.80;
     font-size: 18px;
+    font-style: italic;
 }
 
 .task-title-text {
@@ -518,6 +537,10 @@ input[type=submit]{
 	font-size: 13px;
 	box-shadow: -3px -2px 0px 0px rgba(62,151,151,0.95), 3px 2px 0px 0px rgba(62,151,151,0.95);
 	/* offset-x | offset-y | blur-radius | spread-radius | opacity */
+}
+
+.tag:hover{
+    color: #00bfbf;
 }
 /*********************************/
 /*              LOGIN            */
@@ -665,7 +688,7 @@ unused: #1e2021 - dark purple/green/grey (just dark something)
 
 borders-main: #32675a rotten-green
 borders-button-dimmed : #3e9797 - dimmed-shining-teal
-borders-button-hihlighted: #00bfbf - shining-teal
+borders-button-highlighted: #00bfbf - shining-teal
 
 button-info background: #004747
 button-info background hover: #005959
@@ -697,7 +720,7 @@ HACKS---------------------------------
     border-left: 2px solid transparent;
 }
 
-# prevents wrapping (buttons with names won't shrink)
+#prevents wrapping (buttons with space in name won't shrink)
 .white-space-no-wrap {
     white-space: nowrap;
 }

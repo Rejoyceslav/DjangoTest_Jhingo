@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import TaskList, TaskDetail, TaskCreate, TaskEdit, TaskDelete, AddFolderView, AddTagView, AddGroupView,\
-    TagDeleteView, FolderDeleteView, GroupDeleteView
+from .views import TaskList, TaskDetail, TaskCreate, TaskEdit, TaskDelete, AddFolderView, AddTagView, \
+    TagDeleteView, FolderDeleteView, AddGroupView, GroupDeleteView
+
 from .forms import CustomTaskCreate, CustomTaskEdit
 
 
@@ -13,7 +14,7 @@ urlpatterns = [
 
     path('tasks-folders', AddFolderView.as_view(), name='tasks_folders'),
     path('tasks-tags', AddTagView.as_view(), name='tasks_tags'),
-    path('tasks-groups', AddGroupView.as_view(), name='tasks_groups'),
+    path('tasks-groups', AddGroupView.as_view(), name='tasks_groups'), # disabled everywhere
 
     path('tasks-tag-delete/<str:pk>', TagDeleteView.as_view(), name='tasks_delete_tag'),
     path('tasks-folder-delete/<str:pk>', FolderDeleteView.as_view(), name='tasks_delete_folder'),

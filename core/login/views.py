@@ -38,9 +38,16 @@ class Register(FormView):
 
 
 class Profile(View):
-
     def get(self, request):
         return render(request, 'profile_menu.html')
+
+    def post(self, request):
+        pass
+
+
+class AccessDenied(View):
+    def get(self, request):
+        return render(request, 'access_denied.html')
 
     def post(self, request):
         pass

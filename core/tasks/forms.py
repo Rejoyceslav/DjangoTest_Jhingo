@@ -29,15 +29,15 @@ class CustomTaskCreate(ModelForm):
             widget=forms.Select(attrs={'class': 'input-dark select-multiple-field'})
         )
 
-        self.fields['group'] = forms.ModelChoiceField(
-            label='Group',
-            queryset=Group.objects.filter(user=user),
-            widget=forms.Select(attrs={'class': 'input-dark select-multiple-field'})
-        )
+        # self.fields['group'] = forms.ModelChoiceField(  # disabled everywhere
+        #     label='Group',
+        #     queryset=Group.objects.filter(user=user),
+        #     widget=forms.Select(attrs={'class': 'input-dark select-multiple-field'})
+        # )
 
     class Meta:
         model = Task
-        fields = ['title', 'description', 'complete', 'show_task', 'tags', 'folder_selected', 'group']
+        fields = ['title', 'description', 'complete', 'show_task', 'tags', 'folder_selected']
 
 
 class CustomTaskEdit(ModelForm):
@@ -68,15 +68,15 @@ class CustomTaskEdit(ModelForm):
             widget=forms.Select(attrs={'class': 'input-dark select-multiple-field'})
         )
 
-        self.fields['group'] = forms.ModelChoiceField(
-            label='Group',
-            queryset=Group.objects.filter(user=user),
-            widget=forms.Select(attrs={'class': 'input-dark select-multiple-field'})
-        )
+        # self.fields['group'] = forms.ModelChoiceField(  # disabled everywhere
+        #     label='Group',
+        #     queryset=Group.objects.filter(user=user),
+        #     widget=forms.Select(attrs={'class': 'input-dark select-multiple-field'})
+        # )
 
     class Meta:
         model = Task
-        fields = ['title', 'description', 'complete', 'show_task', 'tags', 'folder_selected', 'group']
+        fields = ['title', 'description', 'complete', 'show_task', 'tags', 'folder_selected']
 
 
 class AddFolderForm(ModelForm):
@@ -103,7 +103,7 @@ class AddTagForm(ModelForm):
         fields = ['name']
 
 
-class AddGroupForm(ModelForm):
+class AddGroupForm(ModelForm):  # disabled everywhere
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

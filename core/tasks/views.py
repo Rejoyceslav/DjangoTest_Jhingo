@@ -95,7 +95,7 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('tasks_list')
 
 
-class AddFolderView(View):
+class AddFolderView(LoginRequiredMixin, View):
 
     def get(self, request):  # get request comes here
         folders = Folder.objects.filter(user=self.request.user)
@@ -125,7 +125,7 @@ class AddFolderView(View):
             messages.error(request, form.errors)
 
 
-class AddTagView(View):
+class AddTagView(LoginRequiredMixin, View):
 
     def get(self, request):  # get request comes here
         tags = Tag.objects.filter(user=self.request.user)
@@ -155,7 +155,7 @@ class AddTagView(View):
             messages.error(request, form.errors)
 
 
-class AddGroupView(View):
+class AddGroupView(LoginRequiredMixin, View):
 
     def get(self, request):  # get request comes here
         groups = Group.objects.filter(user=self.request.user)
@@ -197,7 +197,7 @@ class FolderDeleteView(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('tasks_folders')
 
 
-class GroupDeleteView(LoginRequiredMixin, DeleteView):
+class GroupDeleteView(LoginRequiredMixin, DeleteView):  # disabled everywhere
     model = Group
     context_object_name = 'group'
     success_url = reverse_lazy('tasks_groups')

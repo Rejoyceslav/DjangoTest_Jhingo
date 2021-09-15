@@ -74,15 +74,16 @@
                 </div>
            </form>
 
-           <div class="separator-vertical"></div>
+            <!-- 'group' model has been disabled everywhere -->
+<!--           <div class="separator-vertical"></div>-->
 
-           <form action="{% url 'tasks_groups' %}"> <!-- manage groups button -->
-                <div class="tooltip-wrapper" style="white-space: nowrap">
-                    <button class="btn-info" id="manageGroupsButton"><i class="bi-collection"></i></button>
-                    <div class="tooltip-box" style="margin-left: -25px;">Manage groups</div>
-                    <input aria-labelledby="manageGroupsButton" style="display: none" type="submit">
-                </div>
-           </form>
+<!--           <form action="{% url 'tasks_groups' %}"> &lt;!&ndash; manage groups button &ndash;&gt;-->
+<!--                <div class="tooltip-wrapper" style="white-space: nowrap">-->
+<!--                    <button class="btn-info" id="manageGroupsButton"><i class="bi-collection"></i></button>-->
+<!--                    <div class="tooltip-box" style="margin-left: -25px;">Manage groups</div>-->
+<!--                    <input aria-labelledby="manageGroupsButton" style="display: none" type="submit">-->
+<!--                </div>-->
+<!--           </form>-->
 
         </div>
     </div>
@@ -175,7 +176,7 @@
                             <p>Completed: <span>{{task.complete}}</span></p>
                             <p>Show task: <span>{{task.show_task}}</span></p>
                             <p>Folder: <span>{{task.folder_selected}}</span></p>
-                            <p>Group: <span>{{task.group}}</span></p>
+<!--                            <p>Group: <span>{{task.group}}</span></p>  disabled -->
                             <p>Tags:
                             {% for tag in task.tags.all %}
                                 <span>{{tag}},</span>

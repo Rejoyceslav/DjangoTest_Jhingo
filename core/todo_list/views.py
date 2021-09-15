@@ -6,8 +6,12 @@ from .models import ToDoList
 from .forms import ToDoListForm
 
 
-class ToDoMain(View):
+class ToDoMain(LoginRequiredMixin, View):
     def get(self, request):  # get request comes here
+        if not request.user.username == "admin":
+            response = render(request, 'access_denied.html')
+            return response
+
         items_in_list = ToDoList.objects.all()
         form = ToDoListForm()
 

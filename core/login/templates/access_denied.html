@@ -1,0 +1,17 @@
+{% extends 'info_page.html' %}
+
+{% block info_content %}
+
+<div style="display: flex; margin-bottom: 10px">
+
+    <div class="tooltip-wrapper" style="display: flex">
+        <a href="{% url 'tasks_list' %}"><i id="backButton" style="font-size: 30px; color: orange" class="bi-arrow-left-square"></i></a>
+        <div class="tooltip-box" style="margin-left: -25px;">Back</div>
+        <input aria-labelledby="backButton" style="display: none" type="submit">
+    </div>
+
+    <h2 style="color: Red; padding-left: 20px; font-size: 37px">No permission to access this content</h2>
+
+</div>
+
+{% endblock info_content %}

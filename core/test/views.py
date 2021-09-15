@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from tasks.models import Task
 from .forms import TestModelForm
@@ -6,10 +6,13 @@ from .forms import TestModelForm
 
 @login_required
 def test_model_form_view(request):
-    my_object = Task.objects.get(id=10)
-    form = TestModelForm(instance=my_object)
+    if not request.user.username == "admin":
+        response = render(request, 'access_denied.html')
+        return response
+
+    text = "Welcome"
     context = {
-        'form': form
+        'text': text
     }
     response = render(request, 'test.html', context)
     return response

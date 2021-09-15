@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import MainLoginView, Register, Profile
+from .views import MainLoginView, Register, Profile, AccessDenied
 from django.contrib.auth.views import LogoutView
 from .forms import CustomLoginForm
 
@@ -8,4 +8,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(), name='logout'),
     path('register/', Register.as_view(), name='register_main'),
     path('profile/', Profile.as_view(), name='profile_main'),
+    path('denied/', AccessDenied.as_view(), name='access_denied'),
 ]

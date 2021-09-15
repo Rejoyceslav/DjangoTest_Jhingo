@@ -2,30 +2,6 @@
 
 {% block info_content %}
 
-<h2>CSS Tab</h2>
-
-
-
-    <form id="form1" runat="server">
-    <div id="tabs">
-        <ul>
-            <li><a href="#tabArticle">Article</a></li>
-            <li><a href="#tabBlog">Blog</a></li>
-        </ul>
-        <div id="tabArticle">
-            It is Article Section.
-        </div>
-        <div id="tabBlog">
-            It is Blog Section.
-        </div>
-    </div>
-    </form>
-
-<script type = "text/javascript">
-        $(document).ready(function ()
-        {
-            $("#tabs").tabs();
-        });
-</script>
+{{ text }}
 
 {% endblock info_content %}

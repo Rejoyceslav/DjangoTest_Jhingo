@@ -38,5 +38,11 @@ function expand_all() {
         }
 }
 
+//Sortable
+let drag = document.querySelector('#table-items');
+
+new Sortable(drag, {
+    animation: 350
+});
 
 

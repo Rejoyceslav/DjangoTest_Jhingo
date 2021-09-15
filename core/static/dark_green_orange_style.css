@@ -213,7 +213,6 @@ input[type=submit]{
 
 .input-search { /*overriding input-dark*/
     padding-left: 45px;
-    color: fff !important;
 }
 
 .search-icon {
@@ -418,8 +417,7 @@ input[type=submit]{
 }
 
 .overlay {
-    content: ""; // ::before and ::after both require content
-    position: absolute;
+    content: ""; /*::before and ::after both require content*/
     top: 0;
     left: 0;
     width: auto;
@@ -427,9 +425,7 @@ input[type=submit]{
     opacity: .3;
     z-index: 100;
 }
-
 .task-container {
-
 }
 
 .task-container-row1 {
@@ -629,6 +625,24 @@ p span {
 /*             TABS              */
 /*********************************/
 
+
+
+/*********************************/
+/*          TEST TABLE           */
+/*********************************/
+.table-container{
+ border: 2px solid transparent;
+ background-color: rgb(24, 26, 27);
+}
+
+.table-container div {
+    color: orange;
+}
+
+.table-item {
+    border: 1px solid rgba(140, 130, 115, 0.15);
+    padding: 5px 5px 5px 10px;
+}
 
 
 

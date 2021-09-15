@@ -13,7 +13,7 @@
         <div style="flex: 0 1 100000000px;">
             <div class="search-icon"><i class="mdi mdi-file-search-outline"></i></div>
             <form method="GET" action="/tasks/">
-                <input class="input-search input-dark" style="height: 50px; font-size: 18px" type="text" name="search">
+                <input class="input-search input-dark" style="height: 50px; font-size: 18px" type="text" name="search" spellcheck=False>
             </form>
         </div>
 
@@ -222,12 +222,27 @@
                 {% for tag in task.tags.all %}
 
                 {% if task.complete == False %}
-                <div class="tag">{{tag}}</div>
-                {% else %}
-                <div class="tag">{{tag}}</div>
-                {% endif %}
+                    <form method="GET" action="/tasks/">
+                        <div class="tooltip-wrapper" style="white-space: nowrap">
+                            <button class="tag" id="inputNewTaskButton" style="border: none"><i class="bi-tag">{{tag}}</i></button>
+                            <div class="tooltip-box" style="margin-left: -25px;">Search {{tag}}</div>
+                            <input aria-labelledby="inputNewTaskButton" style="display: none" type="text" name="search" value="{{tag}}">
+                        </div>
+                    </form>
 
+                {% else %}
+                    <form method="GET" action="/tasks/">
+                        <div class="tooltip-wrapper" style="white-space: nowrap">
+                            <button class="tag" id="inputNewTaskButton" style="border: none"><i class="bi-tag">{{tag}}</i></button>
+                            <div class="tooltip-box" style="margin-left: -25px;">Search {{tag}}</div>
+                            <input aria-labelledby="inputNewTaskButton" style="display: none" type="text" name="search" value="{{tag}}">
+                        </div>
+                    </form>
+                {% endif %}
                 {% endfor %}
+<!--           <form method="GET" action="/tasks/">-->
+<!--                <input class="input-search input-dark" style="height: 50px; font-size: 18px" type="text" name="search" spellcheck=False>-->
+<!--            </form>-->
                 </div>
             </div>
         </div>

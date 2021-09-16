@@ -1,7 +1,41 @@
+/*********************************/
+/*          jQuery code          */
+/*********************************/
 $(document).ready(function(){
-//   put jquery code here
+// jQuery code inside this method
+
+//Sortable (tables)
+const selectedItems = document.getElementById('drag-items')
+
+new Sortable(selectedItems, {
+    animation: 350,
+//    chosenClass: "sortable-chosen",
+//    dragClass: "sortable-drag",
+    store: {
+    	// We keep the order of the list
+    	set: (sortable) =>{
+    		const order = sortable.toArray()
+    		localStorage.setItem(sortable.options.group.name, order.join('|'))
+    	},
+
+    	// We get the order of the list
+    	get: (sortable) =>{
+    		const order = localStorage.getItem(sortable.options.group.name)
+    		return order ? order.split('|') : []
+    	}
+    }
+});
+
+
+
+
+
 
 });
+
+/*********************************/
+/*        JavaScript code        */
+/*********************************/
 
 //collapses/expands single task
 function showHide_id(id) {
@@ -37,12 +71,5 @@ function expand_all() {
         x[i].style.display = "flex";
         }
 }
-
-//Sortable
-let drag = document.querySelector('#table-items');
-
-new Sortable(drag, {
-    animation: 350
-});
 
 

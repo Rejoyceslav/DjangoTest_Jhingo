@@ -307,9 +307,15 @@ input[type=submit]{
 .btn-info-buttonless {
     border: none;
     background-color: transparent;
-    color: #008b8b;
+    color: #318d7f;
 }
+/* optional colors:
+#318d7f - best?
+#215e54 - 2nd best?
+#008b8b - 3rd best?
+#8c4eb9 - too fancy?
 
+*/
 .btn-info-buttonless:hover {
     color: #00bfbf;
 }

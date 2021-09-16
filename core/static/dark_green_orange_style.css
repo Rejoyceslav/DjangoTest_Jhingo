@@ -78,7 +78,7 @@ span {
 }
 
 h1, h2, h3, h4, h5 {
-    color: #bb8d5f;
+    color: #008b8b;
     text-align: center;
     word-break: break-word;
 }
@@ -303,23 +303,11 @@ input[type=submit]{
     box-shadow: 0px 0px 1px #777;
 }
 
-.fake-info-btn {
-    font-size: 29px;
-    color: #32675a;
-    position: relative;
-    top: -8px;
-    height: 0px;
-    cursor: help;
-}
-
-.fake-info-btn:hover {
-    color: #00bfbf;
-}
 /* butonless buttons */
 .btn-info-buttonless {
     border: none;
     background-color: transparent;
-    color: #BD8322;
+    color: #008b8b;
 }
 
 .btn-info-buttonless:hover {
@@ -478,6 +466,18 @@ input[type=submit]{
     font-style: italic;
 }
 
+.task-description {
+    display: flex;
+    background-color: transparent;
+    flex: 0 1 1000px;
+}
+
+.task-buttons {
+    display: flex;
+    background-color: transparent;
+    justify-content: right;
+}
+
 .task-title-text {
     color: #008b8b;
     position: relative;
@@ -487,19 +487,6 @@ input[type=submit]{
 .ttt-completed {
     /*color: #454545; /*desaturated*/
     color: #294e4e; /*paled*/
-
-}
-
-.task-buttons {
-    display: flex;
-    background-color: transparent;
-    justify-content: right;
-}
-
-.task-description {
-    display: flex;
-    background-color: transparent;
-    flex: 0 1 1000px;
 }
 
 .task-description-text {
@@ -509,8 +496,8 @@ input[type=submit]{
 }
 
 .tdt-completed {
-    /*color: #7f7f7f; /*desaturated*/
-    color: #645236; /*paled*/
+    color: #7f7f7f; /*desaturated*/
+    /*color: #645236; /*paled*/
 }
 
 .task-tags {

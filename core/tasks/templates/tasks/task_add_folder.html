@@ -15,6 +15,7 @@
 
     {% include 'messages.html' %}
 
+     <hr>
      <div style="margin-top: 10px">Folder name:</div>
 
         <div>
@@ -32,18 +33,18 @@
         <br>
         <span>Available folders (deleting will result in loss of associated tasks):</span>
         <br>
-        <div style="padding-left: 15px" class="input-dark">
+        <div style="padding-left: 5px" class="input-dark">
             {% for folder in folders %}
                 <div style="display: flex">
                     <form action="{% url 'tasks_delete_folder' folder.id %}"> <!-- delete button -->
                         <div class="tooltip-wrapper" style="display: flex">
-                            <button class="btn-danger" id="inputDeleteButton" style="line-height: 16px;"><i class="bi-trash"></i></button>
+                            <button class="btn-info-buttonless" id="inputDeleteButton" style="line-height: 16px;"><i class="bi-trash"></i></button>
                             <div class="tooltip-box" style="margin-left: -25px;">Delete</div>
                             <input aria-labelledby="inputDeleteButton" style="display: none" type="submit">
                         </div>
                     </form>
                     <div class="separator-vertical"></div>
-                    <div style="padding-left: 10px">{{ folder|linebreaksbr }}</div>
+                    <div style="padding-left: 10px; position: relative; top: -4px">{{ folder|linebreaksbr }}</div>
                 </div>
             {% endfor %}
         </div>

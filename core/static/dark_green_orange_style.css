@@ -2,7 +2,7 @@
 /*               BODY            */
 /*********************************/
 body {
-    background-color: red #131516;
+    background-color: #131516;
 }
 /*********************************/
 /*             NAVBAR            */
@@ -78,7 +78,7 @@ body {
     border-radius: 4px;
     -webkit-box-shadow: none;
 	-moz-box-shadow: none;
-	box-shadow: none;
+	box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
     /* background pattern */
 
     background-color: #26232c;
@@ -270,6 +270,7 @@ input[type=submit]{
     padding-left: 45px;
     height: 50px;
     font-size: 18px;
+    box-shadow: 2px 4px 2px 1px rgba(0,0,0,0.75);
 }
 
 .search-icon {
@@ -414,7 +415,7 @@ input[type=submit]{
     border: 1px solid #32675a;
     border-radius: 4px;
     font-size: 16px;
-    box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.75);
+    box-shadow: 2px 4px 4px 2px rgba(0,0,0,0.75);
 }
 
 /* Glassmorphism card effect */
@@ -528,12 +529,17 @@ input[type=submit]{
 	bottom: 0px;
 	right: 0px;
 	background-color: #004747;
-	line-height: 15px;
+	line-height: 16px;
 	border-radius: 4px;
 	font-size: 1.5vh;
 	box-shadow: -3px -2px 0px 0px rgba(62,151,151,0.95), 3px 2px 0px 0px rgba(62,151,151,0.95);
 	/* offset-x | offset-y | blur-radius | spread-radius | opacity */
 }
+
+@media all and (max-width: 1024px) {
+.tag {
+    line-height: 12px;
+}}
 
 .tag:hover{
     color: #00bfbf;

@@ -6,41 +6,30 @@
 <!--suppress XmlDuplicatedId -->
 <div class="center-column" style="max-width:800px">
 
-    <div class="actions-container-row1">
+    <div class="actions-container-row1"> <!-- search bar -->
 
-        <div style="flex: 0 1 100000px;"> <!-- search bar -->
+        <div style="flex: 0 1 100000px;">
             <div class="search-icon"><i class="mdi mdi-file-search-outline"></i></div>
             <form method="GET" action="/tasks/">
-                <input class="input-search input-dark" style="height: 50px; font-size: 18px" type="text" name="search" spellcheck=False>
+                <input class="input-search input-dark" type="text" name="search" spellcheck=False>
             </form>
-        </div>
-
-        <div class="actions-row1-buttons">
-
-            <div class="separator-vertical"></div>
-
-            <form action="{% url 'tasks_create' %}"> <!-- New Task button -->
-            <div class="tooltip-wrapper" style="white-space: nowrap">
-                <button class="btn-lg btn-info" style="position: relative; bottom: -5px" id="inputNewTaskButton"><i class="mdi mdi-file-edit-outline"></i> New task</button>
-                <div class="tooltip-box" style="margin-left: -25px;">New task</div>
-                <input aria-labelledby="inputNewTaskButton" style="display: none" type="submit">
-            </div>
-            </form>
-
         </div>
     </div>
 
-    <div class="actions-container-row2">
+    <div class="actions-container-row2"> <!-- main control buttons -->
 
-        <div class="task-title">
-            <p></p>
-        </div>
+        <form action="{% url 'tasks_create' %}"> <!-- New Task button -->
+            <div class="tooltip-wrapper" style="white-space: nowrap">
+                <button class="btn-info" id="inputNewTaskButton"><i class="mdi mdi-file-edit-outline"></i> New task</button>
+                <input aria-labelledby="inputNewTaskButton" style="display: none" type="submit">
+            </div>
+        </form>
 
         <div class="actions-row2-buttons">
 
             <div class="tooltip-wrapper" style="white-space: nowrap"> <!--expand ann button-->
                 <button onclick="expand_all()" class="btn-info" id="collapseAllButton" type="submit"><i class="bi-arrows-expand"></i></button>
-                <div class="tooltip-box" style="margin-left: -25px;">Expand all</div>
+                <div class="tooltip-box" style="margin-left: -20px;">Expand all</div>
                 <input aria-labelledby="collapseAllButton" style="display: none" type="submit">
             </div>
 
@@ -57,7 +46,7 @@
             <form action="{% url 'tasks_tags' %}"> <!-- manage tags button -->
                 <div class="tooltip-wrapper" style="white-space: nowrap">
                     <button class="btn-info" id="manageTagsButton"><i class="bi-tags"></i></button>
-                    <div class="tooltip-box" style="margin-left: -25px;">Manage tags</div>
+                    <div class="tooltip-box" style="margin-left: -35px;">Manage tags</div>
                     <input aria-labelledby="manageTagsButton" style="display: none" type="submit">
                 </div>
             </form>
@@ -67,30 +56,18 @@
            <form action="{% url 'tasks_folders' %}"> <!-- manage folders button -->
                 <div class="tooltip-wrapper" style="white-space: nowrap">
                     <button class="btn-info" id="manageFoldersButton"><i class="bi-folder"></i></button>
-                    <div class="tooltip-box" style="margin-left: -25px;">Manage folders</div>
+                    <div class="tooltip-box" style="margin-left: -55px;">Manage folders</div>
                     <input aria-labelledby="manageFoldersButton" style="display: none" type="submit">
                 </div>
            </form>
-
-            <!-- 'group' model has been disabled everywhere -->
-<!--           <div class="separator-vertical"></div>-->
-
-<!--           <form action="{% url 'tasks_groups' %}"> &lt;!&ndash; manage groups button &ndash;&gt;-->
-<!--                <div class="tooltip-wrapper" style="white-space: nowrap">-->
-<!--                    <button class="btn-info" id="manageGroupsButton"><i class="bi-collection"></i></button>-->
-<!--                    <div class="tooltip-box" style="margin-left: -25px;">Manage groups</div>-->
-<!--                    <input aria-labelledby="manageGroupsButton" style="display: none" type="submit">-->
-<!--                </div>-->
-<!--           </form>-->
-
         </div>
     </div>
 
     {% for task in tasks %}
     {% if task.complete == False %}
-    <div class="task-main"> <!-- no-overlay/overlay for task body -->
+    <div class="card task-main"> <!-- no-overlay/overlay for task body -->
     {% else %}
-    <div class="task-main tm-completed">
+    <div class="card task-main tm-completed">
     {% endif %}
 
         <div class="task-container">
@@ -128,7 +105,7 @@
                             {% else %}
                             <button class="btn-info-buttonless overlay" id="inputEditButton"><i class="bi-vector-pen"></i></button>
                             {% endif %}
-                            <div class="tooltip-box" style="margin-left: -25px;">Edit</div>
+                            <div class="tooltip-box" style="margin-left: 25px;">Edit</div>
                             <input aria-labelledby="inputEditButton" style="display: none">
                         </div>
                     </form>
@@ -142,32 +119,11 @@
                             {% else %}
                             <button class="btn-info-buttonless overlay" id="inputDeleteButton"><i class="bi-trash"></i></button>
                             {% endif %}
-                            <div class="tooltip-box" style="margin-left: -25px;">Delete</div>
+                            <div class="tooltip-box" style="margin-left: 5px;">Delete</div>
                             <input aria-labelledby="inputDeleteButton" style="display: none">
                         </div>
                     </form>
 
-                    <div class="separator-vertical" style="border-left: 8px solid transparent"></div>
-
-                    <div class="tooltip-wrapper">   <!-- details icon-->
-                        {% if task.complete == False %}
-                         <div class="btn-info-buttonless" id="infoIcon"><i class="fas fa-info"></i></div>
-                        {% else %}           <!-- removing style from div below should work as it does with it -->
-                         <div class="btn-info-buttonless overlay" id="infoIcon"><i class="fas fa-info"></i></div>
-                        {% endif %}
-                        <div class="tooltip-box" style="margin-left: -200px;"> <!-- tooltip message -->
-                            <p>Created: <span>{{task.create}}</span></p>
-                            <p>Completed: <span>{{task.complete}}</span></p>
-                            <p>Show task: <span>{{task.show_task}}</span></p>
-                            <p>Folder: <span>{{task.folder_selected}}</span></p>
-<!--                            <p>Group: <span>{{task.group}}</span></p>  disabled -->
-                            <p>Tags:
-                            {% for tag in task.tags.all %}
-                                <span>{{tag}},</span>
-                            {% endfor %}</p>
-                        </div>
-                        <label aria-labelledby="infoIcon" style="display: none"></label>
-                    </div>
                 </div>
             </div>
 

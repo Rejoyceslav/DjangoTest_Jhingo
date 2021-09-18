@@ -1,4 +1,10 @@
 /*********************************/
+/*               BODY            */
+/*********************************/
+body {
+    background-color: red #131516;
+}
+/*********************************/
 /*             NAVBAR            */
 /*********************************/
 .bg-dark {
@@ -45,7 +51,7 @@
 	/* ^removes margin from top so dropdown doesn't expire before you hover over */
 }
 
-@media (max-width: 1024px) { /* dropdown for mobile customization */
+@media all and (max-width: 1024px) { /* dropdown for mobile customization */
     .dropdown-menu {
         border: 0px solid rgba(0, 190, 190, 0.55) !important;
         box-shadow: none;
@@ -54,14 +60,63 @@
 }
 
 /*********************************/
-/*               BODY            */
+/*           GLOBAL              */
 /*********************************/
-body {
-background-color: #131516;
+.container-fluid {
+    margin: 0px;
+    padding: 0px;
 }
 
-.background-div{
-background-color: #131516;
+.center-column{
+    width: auto;
+    margin: 10px auto; /* keeps 20px from nav bar and automatically centers*/
+    padding-top: 10px;
+    padding-right: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    background-color: #1d1f21;
+    border-radius: 4px;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+    /* background pattern */
+
+    background-color: #26232c;
+    opacity: 1.0;
+    background-image:
+      linear-gradient(135deg, #153333 25%, transparent 25%),
+      linear-gradient(225deg, #153333 25%, transparent 25%),
+      linear-gradient(45deg, #153333 25%, transparent 25%),
+      linear-gradient(315deg, #153333 25%, #26232c 25%);
+    background-position: 22px 0, 22px 0, 0 0, 0 0;
+    background-size: 22px 22px;
+    background-repeat: repeat;
+
+}
+
+@media all and (max-width: 1024px) {
+.center-column {
+    margin: auto; /* keeps 20px from nav bar and automatically centers*/
+    padding-top: 5px;
+    padding-right: 0px;
+    padding-bottom: 5px;
+    padding-left: 0px;
+    -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}}
+
+.center-this {
+    text-align: center;
+}
+
+.info-box {
+    margin: 0px 30px;
+    color: orange;
+}
+
+.info-box p {
+    color: orange;
 }
 
 /*********************************/
@@ -213,23 +268,20 @@ input[type=submit]{
 
 .input-search { /*overriding input-dark*/
     padding-left: 45px;
+    height: 50px;
+    font-size: 18px;
 }
 
 .search-icon {
     height: 0px;
+    width: 0px;
     color: orange;
     position: relative;
     left: 12px;
-    top: 11px;
+    top: 10px;
     font-size: 25px;
     pointer-events: none;
-}
-
-/*********************************/
-/*            DIVS               */
-/*********************************/
-.center-this {
-    text-align: center;
+    background-color: red;
 }
 
 /*********************************/
@@ -324,97 +376,38 @@ input[type=submit]{
 
     outline: none;
  }
-/*********************************/
-/*           INFO-BOX            */
-/*********************************/
-.info-box {
-    margin: 0px 30px;
-    color: orange;
-}
-
-.info-box p {
-    color: orange;
-}
-/*********************************/
-/*         TO-DO LIST            */
-/*********************************/
-.center-column{
-    width: auto;
-    margin: 20px auto; /* keeps 20px from nav bar and automatically centers*/
-    padding-top: 10px;
-    padding-right: 5px;
-    padding-bottom: 15px;
-    padding-left: 5px;
-    background-color: #1d1f21;
-    border-radius: 3px;
-    box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
-}
-
-.item-row{
-    background-color: #153232;
-    margin: 10px;
-    padding: 10px;
-    color: Orange;
-    border-radius: 3px;
-    font-size: 16px;
-    box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.75);
-}
-
-.grid-for-item-row {
-  display: flex;
-  column-gap: 1%;
-  row-gap: 1%;
-}
-
-.column-for-item-row {
-    padding-right: 35px;
-    padding-left: 15px;
-}
-
-.grid-container-onecolumn {
-  display: inline-block;
-}
-
-.grid-container-two-buttons {
-  display: grid;
-  grid-template-columns: 49% 2% 49%;
-}
-
-.separator-horizontal {
-    border-top: 2px solid transparent;
-}
-
-.separator-vertical {
-    border-left: 2px solid transparent;
-}
 
 /*********************************/
 /*             TASKS             */
 /*********************************/
 .actions-container-row1 {
     display: flex;
-    margin: 5px;
-    padding: 5px;
+    margin: 0px 5px 0px 5px;
+    padding: 0px 5px 0px 5px;
 }
 
 .actions-container-row2 {
     display: flex;
     margin: 5px;
     padding: 5px;
+    background-color: inherits;
+    position: relative;
+    top: 0px;
 }
 
 .actions-row1-buttons {
-    display: flex;
 }
 
 .actions-row2-buttons {
     display: flex;
-    background-color: transparent;
-    justify-content: right;
+    background-color: inherits;
+    flex: 0 1 100000px;
+    justify-content: flex-end;
 }
 
 .task-main {
-    background-color: #153333;
+    /*background-color: #153333;*/
+    background-color: rgba(21, 51, 51, 1.00);
     margin: 10px;
     padding: 10px;
     color: Orange;
@@ -422,6 +415,15 @@ input[type=submit]{
     border-radius: 4px;
     font-size: 16px;
     box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.75);
+}
+
+/* Glassmorphism card effect */
+.card {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    /*background-color: rgba(17, 25, 40, 0.75);*/
+    /*border-radius: 12px;*/
+    /*border: 1px solid rgba(255, 255, 255, 0.125);*/
 }
 
 .tm-completed {
@@ -488,6 +490,7 @@ input[type=submit]{
     color: #008b8b;
     position: relative;
     top: 5px;
+    font-size: 2.1vh;
 }
 
 .ttt-completed {
@@ -498,7 +501,7 @@ input[type=submit]{
 .task-description-text {
     color: Orange;
     word-break: break-word;
-    font-size: 100%;
+    font-size: 1.8vh;
 }
 
 .tdt-completed {
@@ -527,7 +530,7 @@ input[type=submit]{
 	background-color: #004747;
 	line-height: 15px;
 	border-radius: 4px;
-	font-size: 13px;
+	font-size: 1.5vh;
 	box-shadow: -3px -2px 0px 0px rgba(62,151,151,0.95), 3px 2px 0px 0px rgba(62,151,151,0.95);
 	/* offset-x | offset-y | blur-radius | spread-radius | opacity */
 }
@@ -550,6 +553,48 @@ p span {
     padding-left: 20px;
     padding-bottom: 5px;
     padding-top: 5px;
+}
+
+/*********************************/
+/*         TO-DO LIST            */
+/*********************************/
+
+.item-row{
+    background-color: #153232;
+    margin: 10px;
+    padding: 10px;
+    color: Orange;
+    border-radius: 3px;
+    font-size: 16px;
+    box-shadow: 2px 2px 4px 1px rgba(0,0,0,0.75);
+}
+
+.grid-for-item-row {
+  display: flex;
+  column-gap: 1%;
+  row-gap: 1%;
+}
+
+.column-for-item-row {
+    padding-right: 35px;
+    padding-left: 15px;
+}
+
+.grid-container-onecolumn {
+  display: inline-block;
+}
+
+.grid-container-two-buttons {
+  display: grid;
+  grid-template-columns: 49% 2% 49%;
+}
+
+.separator-horizontal {
+    border-top: 2px solid transparent;
+}
+
+.separator-vertical {
+    border-left: 2px solid transparent;
 }
 
 /*********************************/
@@ -659,7 +704,6 @@ p span {
     border: 1px solid rgba(140, 130, 115, 0.15);
     padding: 5px 5px 5px 10px;
 }
-
 
 
 /*********************************************/

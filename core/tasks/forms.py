@@ -21,6 +21,7 @@ class CustomTaskCreate(ModelForm):
             label='Tags',
             queryset=Tag.objects.filter(user=user),
             widget=forms.CheckboxSelectMultiple(attrs={'class': 'checkbox-dark'}),
+            blank=True,
         )
 
         self.fields['folder_selected'] = forms.ModelChoiceField(

@@ -13,7 +13,7 @@ class MainLoginView(LoginView):
     authentication_form = CustomLoginForm
     template_name = 'login.html'
     fields = '__all__'
-    redirect_authenticated_user = True
+    redirect_authenticated_user = True  # if false, user will be required to login every time he enters site
 
     def get_success_url(self):
         return reverse_lazy('home')

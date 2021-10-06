@@ -7,6 +7,9 @@ body {
 /*********************************/
 /*             NAVBAR            */
 /*********************************/
+.navbar {
+    min-width: 350px !important;
+}
 .bg-dark {
     background-color: #453163 !important;
 }
@@ -68,6 +71,7 @@ body {
 }
 
 .center-column{
+    min-width: 350px;
     width: auto;
     margin: 10px auto; /* keeps 20px from nav bar and automatically centers*/
     padding-top: 10px;
@@ -111,7 +115,7 @@ body {
 }
 
 .info-box {
-    margin: 0px 30px;
+    margin: 0px 15px 10px 15px;
     color: orange;
 }
 
@@ -190,13 +194,22 @@ input[type=submit]{
     background-color: #242729;
     color: orange;
     box-sizing: border-box;
-    border: 2px solid #3e9797;
+    border: 1px solid #32675a;
     border-radius: 4px;
     resize: none;
 }
+/*
+#32675a
+#3e9797
+#00bfbf
+*/
+.input-dark:hover {
+    border: 1px solid #00bfbf;
+    outline: none;
+}
 
-.input-dark:hover, .input-dark:focus {
-    border: 2px solid #00bfbf;
+.input-dark:focus, input-dark:active {
+    border: 1px solid #00bfbf;
     outline: none;
 }
 
@@ -273,21 +286,59 @@ input[type=submit]{
     box-shadow: 2px 4px 2px 1px rgba(0,0,0,0.75);
 }
 
-.search-icon {
-    height: 0px;
-    width: 0px;
-    color: orange;
-    position: relative;
-    left: 12px;
-    top: 10px;
-    font-size: 25px;
-    pointer-events: none;
-    background-color: red;
-}
-
 /*********************************/
 /*             BUTTONS           */
 /*********************************/
+.button-flat {
+    background-color: rgba(21, 51, 51, 1.00);
+    border: 1px solid #32675a !important;
+    border-radius: 5px 5px 5px 5px;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 14px;
+    margin-left: 0px;
+    margin-right: 0px;
+    transition: 0.2s;
+    font-size: 2.1vh;
+    /*color: #318d7f;*/
+    color: Orange;
+    box-shadow: 2px 4px 2px 1px rgba(0,0,0,0.75);
+}
+
+.button-flat-left {
+    border-left: 1px solid #32675a !important;
+    border-right: 0px solid #32675a !important;
+    border-radius: 5px 0px 0px 5px;
+    margin-right: -1px;
+}
+
+.button-flat-middle {
+    border-left: 0px solid #32675a !important;
+    border-right: 0px solid #32675a !important;
+    border-radius: 0px;
+    margin-right: -1px;
+    margin-left: -1px;
+}
+
+.button-flat-right {
+    border-left: 0px solid #32675a !important;
+    border-right: 1px solid #32675a !important;
+    border-radius: 0px 5px 5px 0px;
+    margin-left: -1px;
+}
+
+.button-flat:hover {
+    /*border: 1px solid #00bfbf !important;*/
+    color: #00bfbf;
+    outline: none;
+}
+
+.button-flat:focus, .button-flat:active {
+    /*border: 1px solid #3e9797 !important;*/
+    color: #3e9797;
+    outline: none;
+}
+
 .btn-danger{
     background-color: #725230;
     border-radius: 4px;
@@ -367,7 +418,6 @@ input[type=submit]{
 #215e54 - 2nd best?
 #008b8b - 3rd best?
 #8c4eb9 - too fancy?
-
 */
 .btn-info-buttonless:hover {
     color: #00bfbf;
@@ -378,13 +428,41 @@ input[type=submit]{
     outline: none;
  }
 
+.handle {
+    border: none;
+    background-color: transparent;
+    color: #318d7f;
+}
+
+.handle:hover {
+    color: #00bfbf;
+}
+
+.handle:focus, .handle:active {
+    outline: none;
+    color: #3e9797;
+    outline: none;
+}
 /*********************************/
 /*             TASKS             */
 /*********************************/
 .actions-container-row1 {
-    display: flex;
-    margin: 0px 5px 0px 5px;
-    padding: 0px 5px 0px 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+}
+
+.search-icon {
+    color: orange;
+    font-size: 25px;
+    height: 0px;
+    width: 0px;
+    position: relative;
+    top: 10px;
+    left: 12px;
+}
+
+.actions-row1-buttons {
 }
 
 .actions-container-row2 {
@@ -396,9 +474,6 @@ input[type=submit]{
     top: 0px;
 }
 
-.actions-row1-buttons {
-}
-
 .actions-row2-buttons {
     display: flex;
     background-color: inherits;
@@ -406,10 +481,20 @@ input[type=submit]{
     justify-content: flex-end;
 }
 
+.actions-container-row3 {
+    display: flex;
+    margin: 5px;
+    padding: 5px;
+    background-color: inherits;
+    position: relative;
+    top: 0px;
+    flex-flow: row wrap;
+}
+
 .task-main {
     /*background-color: #153333;*/
     background-color: rgba(21, 51, 51, 1.00);
-    margin: 10px;
+    margin: 0px 10px 15px 10px;
     padding: 10px;
     color: Orange;
     border: 1px solid #32675a;
@@ -418,7 +503,11 @@ input[type=submit]{
     box-shadow: 2px 4px 4px 2px rgba(0,0,0,0.75);
 }
 
-/* Glassmorphism card effect */
+.tm-completed {
+    background-color: #242424 !important;
+}
+
+/* Glassmorphism card effect
 .card {
     backdrop-filter: blur(16px) saturate(180%);
     -webkit-backdrop-filter: blur(16px) saturate(180%);
@@ -427,19 +516,6 @@ input[type=submit]{
     /*border: 1px solid rgba(255, 255, 255, 0.125);*/
 }
 
-.tm-completed {
-    background-color: #242424; /**/
-}
-
-.overlay {
-    content: ""; /*::before and ::after both require content*/
-    top: 0;
-    left: 0;
-    width: auto;
-    height: auto;
-    opacity: .3;
-    z-index: 100;
-}
 .task-container {
 }
 
@@ -515,9 +591,10 @@ input[type=submit]{
     background-color: transparent;
     flex: 0 1 1000px;
     justify-content: right;
+    flex-flow: row wrap;
 }
 
-.tag{
+.tag {
     color: #b8815a;
     max-height: 20px;
 	margin-left: 3px;
@@ -528,11 +605,11 @@ input[type=submit]{
 	position: relative;
 	bottom: 0px;
 	right: 0px;
-	background-color: #004747;
+	background-color: transparent;  /* #004747*/
 	line-height: 16px;
 	border-radius: 4px;
-	font-size: 1.5vh;
-	box-shadow: -3px -2px 0px 0px rgba(62,151,151,0.95), 3px 2px 0px 0px rgba(62,151,151,0.95);
+	font-size: 1.5vh !important;  /* tabs break this? */
+	/*box-shadow: -3px -2px 0px 0px rgba(62,151,151,0.95), 3px 2px 0px 0px rgba(62,151,151,0.95);*/
 	/* offset-x | offset-y | blur-radius | spread-radius | opacity */
 }
 
@@ -541,9 +618,68 @@ input[type=submit]{
     line-height: 12px;
 }}
 
-.tag:hover{
-    color: #00bfbf;
+.tag:focus, .tag:active {
+    box-shadow: -3px -2px 0px 0px rgba(0,191,191,0.95), 3px 2px 0px 0px rgba(0,191,191,0.95);
+    outline: none;
 }
+
+.tag:hover{
+    /*color: #00bfbf;*/
+    box-shadow: -3px -2px 0px 0px rgba(0,191,191,0.95), 3px 2px 0px 0px rgba(0,191,191,0.95);
+}
+
+.overlay {
+    content: ""; /*::before and ::after both require content*/
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    opacity: .3;
+    z-index: 100;
+}
+/*********************************/
+/*         TASKS TABS            */
+/*********************************/
+
+.tab {
+    background-color: rgba(21, 51, 51, 1.00);
+    border: 1px solid #32675a !important;
+    border-radius: 5px 5px 0px 0px;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 14px;
+    margin-left: 0px;
+    margin-right: 3px;
+    margin-top: 5px;
+    transition: 0.2s;
+    font-size: 2.1vh;
+    color: Orange;
+    box-shadow: 2px 4px 2px 1px rgba(0,0,0,0.75);
+}
+
+.tab::after {
+    background-color: rgba(21, 151, 151, 1.00);
+}
+/*
+#32675a
+#3e9797
+#00bfbf
+*/
+.tab:hover {
+    border: 1px solid #00bfbf !important;
+    outline: none;
+    box-shadow: 2px 4px 2px 1px rgba(50,100,100,0.75), 2px 4px 2px 3px rgba(0,0,0,0.75);
+}
+
+.tab:not(hover) {
+
+}
+
+.tab:focus, .tab:active {
+   border: 1px solid #3e9797 !important;
+   outline: none;
+}
+
 /*********************************/
 /*              LOGIN            */
 /*********************************/
@@ -687,12 +823,117 @@ p span {
     transform: translateY(0px);
 }
 
-
 /*********************************/
-/*             TABS              */
+/*         jQuery TABS           */
+/* add !important when breaking  */
+/*********************************/
+.tasks-tabs{
+    border: none !important;
+}
+
+.ui-tabs {
+    background-color: transparent !important;
+    margin: 10px !important;
+    padding: 0px !important;
+    border: none !important;
+}
+
+.ui-widget {
+
+}
+
+.ui-tabs-nav {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.ui-tabs-tab {
+    background-color: rgba(21, 51, 51, 1.00) !important;
+    border: 1px solid #32675a !important;
+    border-radius: 0px;
+}
+
+.ui-tabs-tab:hover {
+    border: 2px solid #00bfbf;
+    outline: none;
+}
+
+.ui-tabs-anchor {
+    color: Orange !important;
+}
+
+.ui-tabs-anchor:hover {
+    /*color: #00bfbf !important; highlight link */
+}
+
+.ui-tabs-panel {
+    margin: 111px !important;
+    padding: 111px !important;
+    background-color: red !important;
+}
+
+.ui-tab {
+    /*#3e9797*/
+}
+
+.ui-tabs-active {
+    background-color: #294e4e !important;
+}
+
+
+.ui-state-default {
+
+}
+.ui-state-active {
+
+}
+
+.ui-state-hover {
+    border-color: rgba(0, 191, 191, 1.00) !important;
+}
+
+.task-main11 {
+    /*background-color: #153333;*/
+    background-color: rgba(21, 51, 51, 1.00);
+    margin-top: 10px;
+    padding: 10px;
+    color: Orange;
+    border: 1px solid #32675a;
+    border-radius: 4px;
+    font-size: 16px;
+    box-shadow: 2px 4px 4px 2px rgba(0,0,0,0.75);
+}
+
+.ui-corner-bottom {
+    background-color: transparent !important;
+    margin-top: 0px !important;
+    padding: 0px !important;
+    padding-top: 0px !important;
+}
+/*********************************/
+/*          SORTABLE             */
 /*********************************/
 
+.sortable-chosen { /* selected card */
+    background-color: #294e4e;
+}
+    /*
+#3e9797
+#00bfbf
+#1d1f21
+#153232
+#32675a
+#008B8B
+#294e4e 1
+#bb8d5f 1
+#d3d3d3
+*/
 
+
+.sortable-drag { /* "moving card" */
+    display: none;
+    background-color: #3e9797;
+}
 
 /*********************************/
 /*          TEST TABLE           */
@@ -702,15 +943,10 @@ p span {
  background-color: rgb(24, 26, 27);
 }
 
-.table-container div {
-    color: orange;
-}
-
 .table-item {
     border: 1px solid rgba(140, 130, 115, 0.15);
     padding: 5px 5px 5px 10px;
 }
-
 
 /*********************************************/
 /* REMEMBER: BOOTSTRAP CSS STYLES EVERYTHING */
@@ -735,6 +971,7 @@ borders-button-highlighted: #00bfbf - shining-teal
 
 button-info background: #004747
 button-info background hover: #005959
+buttonless color: #318d7f
 
 button-danger background: #725230;
 button-danger background hover: #8e663c;
@@ -746,6 +983,18 @@ regular text: Orange
 header text: #bb8d5f - pale-orange
 placeholder text: #d3d3d3 - pale-grey
 
+/* 3 shades of green border:
+#32675a
+#3e9797
+#00bfbf
+*/
+
+/* optional colors:
+#318d7f - best?
+#215e54 - 2nd best?
+#008b8b - 3rd best?
+#8c4eb9 - too fancy?
+*/
 
 
 SIZES---------------------------------
@@ -767,4 +1016,6 @@ HACKS---------------------------------
 .white-space-no-wrap {
     white-space: nowrap;
 }
+
+flex-flow: row wrap; - prevents overflow in display: flex;
 */

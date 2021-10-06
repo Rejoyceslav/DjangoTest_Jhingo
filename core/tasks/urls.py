@@ -14,7 +14,7 @@ urlpatterns = [
 
     path('tasks-folders', AddFolderView.as_view(), name='tasks_folders'),
     path('tasks-tags', AddTagView.as_view(), name='tasks_tags'),
-    path('tasks-groups', AddGroupView.as_view(), name='tasks_groups'), # disabled everywhere
+    path('tasks-groups', AddGroupView.as_view(), name='tasks_groups'),  # disabled everywhere
 
     path('tasks-tag-delete/<str:pk>', TagDeleteView.as_view(), name='tasks_delete_tag'),
     path('tasks-folder-delete/<str:pk>', FolderDeleteView.as_view(), name='tasks_delete_folder'),

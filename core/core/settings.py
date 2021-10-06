@@ -48,11 +48,15 @@ INSTALLED_APPS = [
     'todo_list',
     'login',
     'tasks',
+    'tasks_api',
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -74,6 +78,7 @@ TEMPLATES = [
             path.join(BASE_DIR, 'todo_list/templates'),
             path.join(BASE_DIR, 'login/templates'),
             path.join(BASE_DIR, 'tasks/templates'),
+            path.join(BASE_DIR, 'tasks_api/templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -149,3 +154,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = 'home'
 LOGIN_URL = 'login_main'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:8000',
+    'http://2629881.pythonanywhere.com',
+]

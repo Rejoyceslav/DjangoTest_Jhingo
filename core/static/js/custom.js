@@ -4,13 +4,16 @@
 $(document).ready(function(){
 // jQuery code inside this method
 
-//Sortable (tables)
-const selectedItems = document.getElementById('drag-items')
 
-new Sortable(selectedItems, {
-    animation: 350,
-//    chosenClass: "sortable-chosen",
-//    dragClass: "sortable-drag",
+//Sortable (tables)
+const selectedSortableItems = document.getElementById('drag-items');
+
+new Sortable(selectedSortableItems, {
+    handle: '.handle',
+    animation: 150,
+//    chosenClass: ".sortable-chosen",
+//    dragClass: ".sortable-drag",
+    swapThreshold: 0.01,
     store: {
     	// We keep the order of the list
     	set: (sortable) =>{
@@ -27,11 +30,12 @@ new Sortable(selectedItems, {
 });
 
 
-
-
-
-
 });
+
+$(document).ready(function() {
+    $("#task_list-tabs").tabs();
+});
+
 
 /*********************************/
 /*        JavaScript code        */

@@ -28,4 +28,5 @@ urlpatterns = [
     path('', include('todo_list.urls')),
     path('', include('login.urls')),
     path('', include('tasks.urls')),
+    path('', include('tasks_api.urls')),
 ]

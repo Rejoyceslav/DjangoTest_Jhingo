@@ -7,7 +7,10 @@ class Tag(models.Model):
     name = models.CharField(max_length=30, null=True, blank=False)
 
     def __str__(self):
-        return self.name
+        if self.name:
+            return self.name
+        else:
+            return "NO_NAME_ASSIGNED"
 
 
 class Folder(models.Model):
@@ -36,7 +39,7 @@ class Task(models.Model):
 
     # relationships
     tags = models.ManyToManyField(Tag, blank=True)
-    folder_selected = models.ForeignKey(Folder, on_delete=models.SET_NULL, null=True, blank=True, default=None)
+    folder_selected = models.ForeignKey(Folder, related_name='tasks', on_delete=models.SET_NULL, null=True, blank=True)
     # group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):

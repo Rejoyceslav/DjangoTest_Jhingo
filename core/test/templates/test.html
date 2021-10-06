@@ -1,43 +1,48 @@
+
+
+
+
+
+
 {% extends 'info_page.html' %}
 
 {% block info_content %}
 
-<div class="center-this">{{ text }} - testing Sortable</div>
+for folder in folders: folder.name <br>
+{% for folder in folders %}
+    {{folder.name}}
+{% endfor %}
+<br><br>
 
-<hr>
+List with id's of folders: <br>
+{{list_of_names}}
+<br><br>
 
-<div class="table-container" id="drag-items">
-    <div class="table-item">Item 1</div>
-    <div class="table-item">Item 2</div>
-    <div class="table-item">Item 3</div>
-    <div class="table-item">Item 4</div>
-    <div class="table-item">Item 5</div>
-    <div class="table-item">Item 6</div>
-</div>
+Len of items in: qs_folders = Folder.objects.all().filter(user=request.user).values() <br>
+{{len_folders}}
+<br><br>
 
-<table>
-    <thead>
-        <tr>
-          <th>Month</th>
-          <th>Savings</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td>January</td>
-          <td>$100</td>
-        </tr>
-        <tr>
-          <td>February</td>
-          <td>$80</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-          <td>Sum</td>
-          <td>$180</td>
-        </tr>
-    </tfoot>
-</table>
+{% for task in reallife_tasks%}
+{{task}}
+{{task.title}}
+{{task.description}}
+{{task.folder_selected}}
+{% endfor %}
+<br><br>
+
+<br><br>
+{% for task in tasks0 %}
+    <pre style="color: orange">{{task.title}}</pre>
+{% endfor %}
+
+<br>
+{% for task in tasks1 %}
+    <pre style="color: orange">{{task.title}}</pre>
+{% endfor %}
+
+<br>
+{% for task in tasks2 %}
+    <pre style="color: orange">{{task.title}}</pre>
+{% endfor %}
 
 {% endblock info_content %}

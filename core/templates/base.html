@@ -40,10 +40,14 @@
           Apps
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'word_counter' %}">word counter</a>
-          <a class="dropdown-item" href="{% url 'todo_main' %}">to-do list</a>
-          <a class="dropdown-item" href="{% url 'tasks_list' %}">tasks</a>
-          <a class="dropdown-item" href="{% url 'test' %}">test</a>
+          <a class="dropdown-item" href="{% url 'word_counter' %}">Word counter</a>
+          <a class="dropdown-item" href="{% url 'todo_main' %}">To-do list</a>
+          <a class="dropdown-item" href="{% url 'tasks_list' %}">Tasks</a>
+          {% if request.user.username == 'admin' %}
+          <a class="dropdown-item" href="{% url 'tasks_api_list' %}">Tasks API</a>
+          {% else %}
+          {%endif %}
+          <a class="dropdown-item" href="{% url 'test' %}">Test</a>
           <!--          <div class="dropdown-divider"></div>-->
         </div>
       </li>

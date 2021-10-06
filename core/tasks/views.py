@@ -33,18 +33,29 @@ class TaskList(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         # adding data to queryset with context and filtering the data
         qs = Task.objects.all().filter(user=self.request.user)
+        qs_folders = Folder.objects.all().filter(user=self.request.user)
         search_query = self.request.GET.get('search', None)
+        folder_query = self.request.GET.get('folder', None)
 
         if search_query is not None:
             qs = qs.filter(
                 Q(user=self.request.user) &
-                Q(title__icontains=search_query) |
-                Q(tags__name__icontains=search_query) |
-                Q(description__icontains=search_query)
+                (
+                 Q(title__icontains=search_query) |
+                 Q(description__icontains=search_query) |
+                 Q(tags__name__icontains=search_query)
+                 )
                 )
 
-        context = super().get_context_data(**kwargs)
+        if folder_query is not None:
+            qs = qs.filter(
+                Q(user=self.request.user) &
+                Q(folder_selected=folder_query)
+            )
+
+        context = super(TaskList, self).get_context_data(**kwargs)
         context['tasks'] = qs
+        context['folders'] = qs_folders
         # context['tasks'] = context['tasks'].filter(user=self.request.user).filter(title__icontains=query)
         # context['count'] = context['tasks'].filter(complete=False).count()
         # context['default_filter'] = default_filter

@@ -11,11 +11,10 @@
         </div>
 
         <h2 style="padding-left: 20px; font-size: 37px">Manage Tags</h2>
-
     </div>
 
     {% include 'messages.html' %}
-    <hr>
+
     <div style="margin-top: 10px">Tag name:</div>
 
         <div>
@@ -36,7 +35,6 @@
         <div style="padding-left: 5px" class="input-dark">
             {% for tag in tags %}
                 <div style="display: flex">
-
                     <form action="{% url 'tasks_delete_tag' tag.id %}"> <!-- delete button -->
                         <div class="tooltip-wrapper" style="display: flex">
                             <button class="btn-info-buttonless" id="inputDeleteButton" style="line-height: 16px;"><i class="bi-trash"></i></button>
